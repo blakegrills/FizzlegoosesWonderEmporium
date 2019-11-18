@@ -2,6 +2,10 @@ import random
 
 def Currency(cr, currency) :
     details = ""
+    if cr < 4 :
+        copRan = int(random.randrange(1, 10, 1))
+        silRan = int(random.randrange(1, 5, 1))
+        golRan = int(random.randrange(0, 1.1, .1))
     return details    
 
 def ArtObj(cr, artObj) :
