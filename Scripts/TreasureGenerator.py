@@ -3,9 +3,27 @@ import random
 def Currency(cr, currency) :
     details = ""
     if cr < 4 :
-        copRan = int(random.randrange(1, 10, 1))
-        silRan = int(random.randrange(1, 5, 1))
+        copRan = int(random.randrange(1, 11, 1))
+        silRan = int(random.randrange(1, 6, 1))
         golRan = int(random.randrange(0, 1.1, .1))
+        details = "%s%s" % (details, "\n-Coins--------------------------------------\n")
+        details = "%s%s%s%s%s%s%s" % (details, "copper coins: ", (copRan * 17), "\nsilver coins: ", (silRan * 8), "\ngold coins: ", (int(golRan * 10)))
+        details = "%s%s" % (details, "\n--------------------------------------------\n")
+    elif cr > 3 and cr < 7 :
+        copRan = int(random.randrange(1, 11, 1))
+        silRan = int(random.randrange(1, 11, 1))
+        golRan = int(random.randrange(0, 21, 1))
+        details = "%s%s" % (details, "\n-Coins--------------------------------------\n")
+        details = "%s%s%s%s%s%s%s" % (details, "copper coins: ", (copRan * 8), "\nsilver coins: ", (silRan * 13), "\ngold coins: ", (golRan * 6))
+        details = "%s%s" % (details, "\n--------------------------------------------\n")
+    elif cr > 6 and cr < 13 :
+        copRan = int(random.randrange(1, 10, 1))
+        silRan = int(random.randrange(5, 50, 5))
+        golRan = int(random.randrange(10, 100, 10))
+        plaRan = int(random.randrange(0, 5.25, .25))
+        details = "%s%s" % (details, "\n-Coins--------------------------------------\n")
+        details = "%s%s%s%s%s%s%s" % (details, "copper coins: ", (copRan * 6), "\nsilver coins: ", (silRan * 19), "\ngold coins: ", (golRan * 13), "\nplatinum pieces: ", (int(plaRan * 5)))
+        details = "%s%s" % (details, "\n--------------------------------------------\n")
     return details    
 
 def ArtObj(cr, artObj) :
@@ -56,9 +74,9 @@ def Intelligent(cr, intelligent) :
     details = ""
     return details   
 
-def EncouterTreasure(cr, currency = 1, artObj = 1, specialMats = 1, normEquip = 1,
-                     magicEquip = 1, pots = 1, scroll = 1, wandStaff = .5, rod = .5,
-                     wonderous = .5, artifact = 0, cursed = 0, intelligent = 0) :
+def EncouterTreasure(cr, currency = .7, artObj = .6, specialMats = .5, normEquip = .7,
+                     magicEquip = .6, pots = .6, scroll = .6, wandStaff = .4, rod = .3,
+                     wonderous = .3, artifact = 0, cursed = 0, intelligent = 0) :
     details = ""
     Currency(cr, currency)  
     ArtObj(cr, artObj)  
@@ -76,9 +94,9 @@ def EncouterTreasure(cr, currency = 1, artObj = 1, specialMats = 1, normEquip = 
 
     return details
 
-def HoardTreasure(cr, currency = .5, artObj = .5, specialMats = .5, normEquip = 1,
-                  magicEquip = .5, pots = .5, scroll = .5, wandStaff = .25, rod = .25,
-                  wonderous = .25, artifact = 0, cursed = 0, intelligent = 0) :
+def HoardTreasure(cr, currency = .6, artObj = .5, specialMats = .4, normEquip = .9,
+                  magicEquip = .4, pots = .4, scroll = .4, wandStaff = .2, rod = .1,
+                  wonderous = .2, artifact = 0, cursed = 0, intelligent = 0) :
     details = ""
     Currency(cr, currency)  
     ArtObj(cr, artObj)  
