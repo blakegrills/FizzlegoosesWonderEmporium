@@ -129,7 +129,7 @@ def SpecialMats(cr, specialMats) :
     possibility = specialMats * random.randrange(1, 101, 1)
     if possibility > 34 :
         while specialMatsCount > 0 :
-            details = "%s%s%s%s" % (details, int(cr*.75), " lbs of", specialMatsList[random.randrange(0, specialMatsList.__len__(), 1)])
+            details = "%s%s%s%s%s" % (details, int(cr*.75), " lbs of", specialMatsList[random.randrange(0, specialMatsList.__len__(), 1)], "\n")
     details = "%s%s" % (details, "\n-Normal-Equipment---------------------------\n")
     return details    
 
@@ -172,7 +172,7 @@ def NormEquip(cr, normEquip) :
             if normEquipList[i] in normContain :
                 count = normContain.count(normEquipList[i])
                 if count > 0 :
-                    details = "%s%s%s%s" % (details, count, " x ", normEquipList[i])
+                    details = "%s%s%s%s%s" % (details, count, " x ", normEquipList[i], "\n")
     details = "%s%s" % (details, "\n-Magic-Equipment----------------------------\n")
     return details    
 
@@ -357,15 +357,14 @@ def MagicEquip(cr, magicEquip) :
             counter = int(cr*1)
         else :
             counter = int(cr*1.333)
-        if possibility > 34 :
-            while counter > 0 :
-                magicContain.append(random.randrange(0, magicEquipList.__len__(), 1))
-                counter -= 1
-            for i in range(0, magicEquipList.__len__()) :
-                if magicEquipList[i] in magicContain :
-                    count = magicContain.count(magicEquipList[i])
-                    if count > 0 :
-                        details = "%s%s%s%s" % (details, count, " x ", magicEquipList[i])
+        while counter > 0 :
+            magicContain.append(random.randrange(0, magicEquipList.__len__(), 1))
+            counter -= 1
+        for i in range(0, magicEquipList.__len__()) :
+            if magicEquipList[i] in magicContain :
+                count = magicContain.count(magicEquipList[i])
+                if count > 0 :
+                    details = "%s%s%s%s%s" % (details, count, " x ", magicEquipList[i], "\n")
     details = "%s%s" % (details, "\n-Potions------------------------------------\n")
     return details    
 
@@ -408,15 +407,14 @@ def Pots(cr, pots) :
             counter = int(cr*2)
         else :
             counter = int(cr*2.75)
-        if possibility > 34 :
-            while counter > 0 :
-                potionContain.append(random.randrange(0, potionList.__len__(), 1))
-                counter -= 1
-            for i in range(0, potionList.__len__()) :
-                if potionList[i] in potionContain :
-                    count = potionContain.count(potionList[i])
-                    if count > 0 :
-                        details = "%s%s%s%s" % (details, count, " x ", potionList[i])
+        while counter > 0 :
+            potionContain.append(random.randrange(0, potionList.__len__(), 1))
+            counter -= 1
+        for i in range(0, potionList.__len__()) :
+            if potionList[i] in potionContain :
+                count = potionContain.count(potionList[i])
+                if count > 0 :
+                    details = "%s%s%s%s%s" % (details, count, " x ", potionList[i], "\n")
     details = "%s%s" % (details, "\n-Scrolls------------------------------------\n")
     return details    
 
@@ -516,8 +514,26 @@ def Scroll(cr, scroll) :
                     "Scroll of Voice Alteration (um, 25 gp)", "Scroll of Vortex (apg, 2275 gp)", "Scroll of Wall of Ice (cr, 700 gp)", "Scroll of Wall of Iron (cr, 1700 gp)", "Scroll of Wall of Lava (apg, 3000 gp)", 
                     "Scroll of Wall of Stone (cr, 1125 gp)", "Scroll of Wandering Star Motes (apg, 700 gp)", "Scroll of Water Walk (cr, 375 gp)", "Scroll of Web (cr, 150 gp)", "Scroll of Whispering Wind (cr, 150 gp)", 
                     "Scroll of Wind Blades (arg, 1125 gp)", "Scroll of Wish (cr, 3825 gp)", "Scroll of Word of Chaos (cr, 2275 gp)", "Scroll of World Wave (apg, 3825 gp)"]
-    possibility = artObj * random.randrange(1, 101, 1)
+    possibility = scroll * random.randrange(1, 101, 1)
+    scrollContain = []
     if possibility > 34 :
+        counter = 0
+        if cr < 5 :
+            counter = int(cr*.333)
+        elif cr < 10 :
+            counter = int(cr*.444)
+        elif cr < 15 :
+            counter = int(cr*.555)
+        else :
+            counter = int(cr*.666)
+        while counter > 0 :
+            scrollContain.append(random.randrange(0, scrollList.__len__(), 1))
+            counter -= 1
+        for i in range(0, scrollList.__len__()) :
+            if scrollList[i] in scrollContain :
+                count = scrollContain.count(scrollList[i])
+                if count > 0 :
+                    details = "%s%s%s%s%s" % (details, count, " x ", scrollList[i], "\n")
     details = "%s%s" % (details, "\n-Wand---------------------------------------\n")
     return details    
 
@@ -688,8 +704,26 @@ def Wand(cr, wand) :
                 "Wand of Web (cr, 4500 gp)", "Wand of Web (cr, 4500 gp) (design provides clue to function)", "Wand of Web (cr, 4500 gp) (inscription provides clue to function)", "Wand of Whispering Wind (cr, 4500 gp)", 
                 "Wand of Whispering Wind (cr, 4500 gp) (inscription provides clue to function)", "Wand of Wind Wall (cr, 11250 gp)", "Wand of Wind Wall (cr, 11250 gp) (design provides clue to function)", 
                 "Wand of Wood Shape (cr, 4500 gp) (design provides clue to function)", "Wand of Zone of Truth (cr, 4500 gp)"]
-    possibility = artObj * random.randrange(1, 101, 1)
+    possibility = wand * random.randrange(1, 101, 1)
+    wandContain = []
     if possibility > 34 :
+        counter = 0
+        if cr < 5 :
+            counter = int(cr*.222)
+        elif cr < 10 :
+            counter = int(cr*.333)
+        elif cr < 15 :
+            counter = int(cr*.444)
+        else :
+            counter = int(cr*.555)
+        while counter > 0 :
+            wandContain.append(random.randrange(0, wandList.__len__(), 1))
+            counter -= (cr*15)
+        for i in range(0, wandList.__len__()) :
+            if wandList[i] in wandContain :
+                count = wandContain.count(wandList[i])
+                if count > 0 :
+                    details = "%s%s%s%s%s" % (details, count, " x ", wandList[i], "\n")
     details = "%s%s" % (details, "\n-Staff--------------------------------------\n")
     return details    
 
@@ -710,8 +744,26 @@ def Staff(cr, staff) :
                     "Staff of Swarming Insects (22800 gp) (inscription provides clue to function)", "Staff of the Scout (9600 gp)", "Staff of the Scout (9600 gp) (inscription provides clue to function)", 
                     "Staff of Tricks (8800 gp)", "Staff of Tricks (8800 gp) (design provides clue to function)", "Staff of Tricks (8800 gp) (inscription provides clue to function)", "Staff of Understanding (16000 gp)", 
                     "Staff of Understanding (16000 gp) (design provides clue to function)", "Staff of Understanding (16000 gp) (inscription provides clue to function)"]
-    possibility = artObj * random.randrange(1, 101, 1)
+    possibility = staff * random.randrange(1, 101, 1)
+    staffContain = []
     if possibility > 34 :
+        counter = 0
+        if cr < 5 :
+            counter = int(cr*0)
+        elif cr < 10 :
+            counter = int(cr*.2)
+        elif cr < 15 :
+            counter = int(cr*.3)
+        else :
+            counter = int(cr*.4)
+        while counter > 0 :
+            staffContain.append(random.randrange(0, staffList.__len__(), 1))
+            counter -= (cr*.15)
+        for i in range(0, staffList.__len__()) :
+            if staffList[i] in staffContain :
+                count = staffContain.count(staffList[i])
+                if count > 0 :
+                    details = "%s%s%s%s%s" % (details, count, " x ", staffList[i], "\n")
     details = "%s%s" % (details, "\n-Rods---------------------------------------\n")
     return details
 
@@ -722,8 +774,26 @@ def Rod(cr, rod) :
                 "Rod of Ruin (16000 gp)", "Rod of the Python (13000 gp)", "Rod of the Viper (19000 gp)", "Rod of the Viper (19000 gp) (design provides clue to function)", 
                 "Rod of the Viper (19000 gp) (inscription provides clue to function)", "Rod of the Wayang (12000 gp)", "Rod of the Wayang (12000 gp) (inscription provides clue to function)", 
                 "Rod of Wonder (12000 gp)", "Sapling Rod (16650 gp)"]
-    possibility = artObj * random.randrange(1, 101, 1)
+    possibility = rod * random.randrange(1, 101, 1)
+    rodContain = []
     if possibility > 34 :
+        counter = 0
+        if cr < 5 :
+            counter = int(cr*0)
+        elif cr < 10 :
+            counter = int(cr*0)
+        elif cr < 15 :
+            counter = int(cr*.15)
+        else :
+            counter = int(cr*.25)
+        while counter > 0 :
+            rodContain.append(random.randrange(0, rodList.__len__(), 1))
+            counter -= (cr*.08)
+        for i in range(0, rodList.__len__()) :
+            if rodList[i] in rodContain :
+                count = rodContain.count(rodList[i])
+                if count > 0 :
+                    details = "%s%s%s%s%s" % (details, count, " x ", rodList[i], "\n")
     details = "%s%s" % (details, "\n-ring----------------------------------------\n")
     return details    
 
@@ -754,7 +824,25 @@ def Ring(cr, ring) :
                 "Prisoner's Dungeon Ring (250 gp) (design provides clue to function)", "Prisoner's Dungeon Ring (250 gp) (inscription provides clue to function)", "Superior Ring of Revelation (24000 gp)", 
                 "Superior Ring of Revelation (24000 gp) (design provides clue to function)", "Superior Ring of Revelation (24000 gp) (inscription provides clue to function)"]
     possibility = ring * random.randrange(1, 101, 1)
+    ringContain = []
     if possibility > 34 :
+        counter = 0
+        if cr < 4 :
+            counter = int(cr*0)
+        elif cr < 10 :
+            counter = int(cr*.2)
+        elif cr < 15 :
+            counter = int(cr*.3)
+        else :
+            counter = int(cr*.4)
+        while counter > 0 :
+            ringContain.append(random.randrange(0, ringList.__len__(), 1))
+            counter -= (cr*.125)
+        for i in range(0, ringList.__len__()) :
+            if ringList[i] in ringContain :
+                count = ringContain.count(ringList[i])
+                if count > 0 :
+                    details = "%s%s%s%s%s" % (details, count, " x ", ringList[i], "\n")
     details = "%s%s" % (details, "\n-Wonderous----------------------------------\n")
     return details  
 
@@ -823,74 +911,341 @@ def Wonderous(cr, wonderous) :
                         "Stone of Alarm (2700 gp) (inscription provides clue to function)", "Summon-slave Crystal (10000 gp)", "Treasurer's Seal (10000 gp)", "Vambraces of the Genie (djinni) (18900 gp)", 
                         "Vambraces of the Genie (marid) (18900 gp) (inscription provides clue to function)", "Vampiric Gloves (18000 gp)", "Vest of Stable Mutation (20000 gp)", "Vest of Surgery (3000 gp)", 
                         "Vest of Surgery (3000 gp) (inscription provides clue to function)", "Volatile Vaporizer (2nd) (3000 gp) (design provides clue to function)", "Word Bottle (1500 gp)"]
-    possibility = artObj * random.randrange(1, 101, 1)
+    possibility = wonderous * random.randrange(1, 101, 1)
+    wonderousContain = []
     if possibility > 34 :
+        counter = 0
+        if cr < 4 :
+            counter = int(cr*.222)
+        elif cr < 9 :
+            counter = int(cr*.444)
+        elif cr < 14 :
+            counter = int(cr*.666)
+        else :
+            counter = int(cr*.888)
+        while counter > 0 :
+            wonderousContain.append(random.randrange(0, wonderousList.__len__(), 1))
+            counter -= (cr*15)
+        for i in range(0, wonderousList.__len__()) :
+            if wonderousList[i] in wonderousContain :
+                count = wonderousContain.count(wonderousList[i])
+                if count > 0 :
+                    details = "%s%s%s%s%s" % (details, count, " x ", wonderousList[i], "\n")
     details = "%s%s" % (details, "\n-Artifact-----------------------------------\n")
     return details    
 
 def Artifact(cr, artifact) :
     details = ""
-    possibility = artObj * random.randrange(1, 101, 1)
-    if possibility > 34 :
+    lesserList = ["Aegis (Minor Artifact)", "Amulet of Faith (Minor Artifact)", "Argental Font (Minor Artifact)", "Automaton Core (Minor Artifact)", "Azure Pendant (Minor Artifact)", 
+                    "Beacon of True Faith (Minor Artifact)", "Bell of Mercy (Minor Artifact)", "Black Iron Axe (Minor Artifact)", "Bone House (Minor Artifact)", "Book of Infinite Spells (Minor Artifact)", 
+                    "Branch of Life (Minor Artifact)", "Bullroarers of Outburst (Minor Artifact)", "Crown of the Iron King (Minor Artifact)", "Crown of the Simurgh (Minor Artifact)", 
+                    "Cubic Spiral (Minor Artifact)", "Cup of Forbidden Knowledge (Minor Artifact)", "Dark Grimoire (Minor Artifact)", "Deck of Harrowed Tales (Minor Artifact)", 
+                    "Deck of Many Things (Minor Artifact)", "Deck of Many Things, Harrow (Minor Artifact)", "Dragon Seal (Minor Artifact)", "Dragon Slayer (Minor Artifact)", "Earth’s Eye (Minor Artifact)", 
+                    "Elder Sign (Minor Artifact)", "Elemental Chain (Minor Artifact)", "Enemy of All Enemies (Minor Artifact)", "Fleshhook of Mythic Sustenance (Minor Artifact)", "Fluttered Wing (Minor Artifact)", 
+                    "Fortune's Arrow (Minor Artifact)", "Glabrezu Claw (Minor Artifact)", "Greater Ring of Elemental Command (Minor Artifact)", "Hammer of Thunderbolts (Minor Artifact)", 
+                    "Harp of Night's Hope (Minor Artifact)", "Helm of Governance (Minor Artifact)", "Hermetic Flask (Minor Artifact)", "Hourglass of Shadows (Minor Artifact)", "Id Portrait (Minor Artifact)", 
+                    "Intergalactic Orrery (Minor Artifact)", "Ioun Stone, Amethyst Crescent (Minor Artifact)", "Ioun Stone, Jaundiced Skull (Minor Artifact)", "Ioun Stone, Radiant Blue Sphere (Minor Artifact)", 
+                    "Ioun Stone, Sparkling Blue Rhomboid (Minor Artifact)", "Ioun Stone, Spindle of Perfect Knowledge (Minor Artifact)", "Ioun Stone, Vivacious Rose Prism (Minor Artifact)", 
+                    "Jaundiced Skull Ioun Stone Minor Artifact", "Knucklebone of Fickle Fortune (Minor Artifact)", "Maleficus Spike (Minor Artifact)", "Mantis Blade (Minor Artifact)", 
+                    "Monkey's Paw (Minor Artifact)", "Nexus Crystal (Minor Artifact)", "Pendant of the First Tears (Minor Artifact)", "Perfect Golden Lute (Minor Artifact)", "Philosopher's Stone (Minor Artifact)", 
+                    "Phylactery of the Failed (Minor Artifact)", "Raven’s Head (Minor Artifact)", "Reprisal (Minor Artifact)", "Revelation Quill (Minor Artifact)", "Ring of Equilibrium (Minor Artifact)", 
+                    "Rod of Spell Sundering (Minor Artifact)", "Runescarred Dragonship (Minor Artifact)", "Runeslave Cauldron (Minor Artifact)", "Runewarded Gauntlets (Minor Artifact)", 
+                    "Runewell Amulet (Minor Artifact)", "Runewell, Minor (Minor Artifact)", "Screaming Spear of the Sun (Minor Artifact)", "Sihedron Tome (Minor Artifact)", "Slime Tendril (Minor Artifact)", 
+                    "Spear of Shards (Minor Artifact)", "Sphere of Annihilation (Minor Artifact)", "Staff of Eldritch Sovereignty (Minor Artifact)", "Staff of the Magi (Minor Artifact)", 
+                    "Storm Kindler's Rod (Minor Artifact)", "Sword of the Mists (Minor Artifact)", "Talisman of Pure Good (Minor Artifact)", "Talisman of Reluctant Wishes (Minor Artifact)", 
+                    "Talisman of the Sphere (Minor Artifact)", "Talisman of Ultimate Evil (Minor Artifact)", "Tentacle of the Vaults (Minor Artifact)", "The Enthroned King (Minor Artifact)", 
+                    "Torc of the Heavens (Minor Artifact)", "Unending Tome (Minor Artifact)", "Vernal Key (Minor Artifact)", "Vicious Link (Minor Artifact)", "Visionary Lens (Minor Artifact)", 
+                    "Warding Box (Minor Artifact)", "Weird Queen's Magpie (Minor Artifact)", "Witherfang (Minor Artifact)"]
+    majorList = ["Anathema Archive (Major Artifact)", "Anima Focus (Major Artifact)", "Apocalypse Box (Major Artifact)", "Apollyon Ring (Major Artifact)", "Aqualinth (Major Artifact)", 
+                    "Armor of Skulls (Major Artifact)", "Avernus Claw (Major Artifact)", "Axe of Dread (Major Artifact)", "Axe of the Dwarvish Lords (Major Artifact)", "Barding of Pleated Light (Major Artifact)", 
+                    "Blackaxe (Major Artifact)", "Bloodstones of the Valiant (Major Artifact)", "Book of the Damned (A&L; Major Artifact)", "Book of the Damned: Daemonic (Major Artifact)", 
+                    "Book of the Damned: Demonic (Major Artifact)", "Bottle of the Bound (Major Artifact)", "Bound Blade (Major Artifact)", "Brazen Egg (Major Artifact)", "Briar (Major Artifact)", 
+                    "Burning Glaive (Major Artifact)", "Calabash of Last Draughts (Major Artifact)", "Celestial Lens (Major Artifact)", "Chalice of Enchantment (Major Artifact)", 
+                    "Chronicle of the Righteous (Major Artifact)", "Cicatrix (Major Artifact)", "Cloud Castle of the Storm King (Major Artifact)", "Codex of the Infinite Planes (Major Artifact)", 
+                    "Crook and Flail of Kings (Major Artifact)", "Crown of Fangs (Major Artifact)", "Crown of Infernal Majesty (Major Artifact)", "Dancing Hut of Baba Yaga (Major Artifact)", 
+                    "Demon Prince Armor (Major Artifact)", "Demonscope (Major Artifact)", "Deskari's Tooth (Major Artifact)", "Diadem of Nod (Major Artifact)", "Doom Idol (Major Artifact)", 
+                    "Dreamstone (Major Artifact)", "Dryad’s Song (Corrupted) Major Artifact)", "Elven Crown (Major Artifact)", "Emperor's Mammoth (Major Artifact)", "Flame of Guidance (Major Artifact)", 
+                    "Forge of the Maker (Major Artifact)", "Fork of the Forgotten One (Major Artifact)", "Frozen Heart of Cocytus (Major Artifact)", "Gem of Dreams (Major Artifact)", 
+                    "Greatcube of Power (Major Artifact)", "Guardian Key (Major Artifact)", "Handflower of Genocide (Major Artifact)", "Heart of the Herald (Major Artifact)", "Heart's Bane (Major Artifact)", 
+                    "Heart's Edge (Major Artifact)", "Helicyon (Major Artifact)", "Horns of Death (Major Artifact)", "Howling Horn (Major Artifact)", "Icecrown (Major Artifact)", 
+                    "Idol of the Spider God (Major Artifact)", "Ihystear (Major Artifact)", "Imago Lens (Major Artifact)", "Impossible Eye (Major Artifact)", "Infensus Mucro (Major Artifact)", 
+                    "Invidian Eye (Major Artifact)", "Invidious Halberd (Major Artifact)", "Invulnerable Chalice (Major Artifact)", "Jar of Dragon's Teeth (Major Artifact)", 
+                    "Jawbone of the Venerable (Major Artifact)", "Legendsbane (Major Artifact)", "Lens of Dimensional Shielding (Major Artifact)", "Linnorm's Lament (Major Artifact)", 
+                    "Lung Bloodstone (Major Artifact)", "Mask of the Forgotten Pharaoh (Major Artifact)", "Master's Sword (Major Artifact)", "Mirror of Fascination (Major Artifact)", 
+                    "Moaning Diamond (Major Artifact)", "Mother Deck (Major Artifact)", "Netherworld Cauldron (Major Artifact)", "Nimbus of Radiant Truth (Major Artifact)", "Orbs of Dragonkind (Major Artifact)", 
+                    "Pauper's Thighbone (Major Artifact)", "Pazuzu’s Scepter (Major Artifact)", "Perfection's Key (Major Artifact)", "Plaguebringer (Major Artifact)", "Primogen Crown Major Artifact", 
+                    "Radiance (Major Artifact)", "Ravenous Blade (Major Artifact)", "Riftcarver (Major Artifact)", "Ring of Nine Facets (Major Artifact)", "Robe of the Rifts (Major Artifact)", 
+                    "Rune Shield (Major Artifact)", "Runewell of Greed (Major Artifact)", "Saint Cuthbert's Mace", "Sarcophagus of Rebirth (Major Artifact)", "Scepter of Ages (Major Artifact)", 
+                    "Scepter of Magical Might (Major Artifact)", "Scepter of the Shining Lord (Major Artifact)", "Scroll of the Planes (Major Artifact)", "Shadowstaff", "Shadowwraith Heart (Major Artifact)", 
+                    "Shard of Envy (Major Artifact)", "Shard of Gluttony (Major Artifact)", "Shard of Greed (Major Artifact)", "Shard of Lust (Major Artifact)", "Shard of Pride (Major Artifact)", 
+                    "Shard of Sloth (Major Artifact)", "Shard of Wrath (Major Artifact)", "Shield of the Sun", "Shield of the Winged Eye", "Shredskin (Major Artifact)", "Shroud of Flies (Major Artifact)", 
+                    "Sihedron (Major Artifact)", "Silver Maiden (Major Artifact)", "Skull of the Viper God", "Skullsoul", "Song of Extinction (Music Box)", "Soulforge (Major Artifact)", 
+                    "Spherical Boat (Major Artifact)", "Staff of Changes (Major Artifact)", "Staff of Elemental Castigation (Major Artifact)", "Staff of the Slain (Major Artifact)", 
+                    "Stole of the Inheritor (Major Artifact)", "Stormblade (Major Artifact)", "Sword of Envy (Major Artifact)", "Sword of Gluttony (Major Artifact)", "Sword of Greed", 
+                    "Sword of Lust (Major Artifact)", "Sword of Pride (Major Artifact)", "Sword of Sloth (Major Artifact)", "Sword of Valor (Major Artifact)", "Sword of Wrath (Major Artifact)", 
+                    "Synchrony Device (Major Artifact)", "Tarnhelm (Major Artifact)", "Tathlum (Major Artifact)", "The Briar Blade", "The Gasping Pearl (Major Artifact)", "The Jewel of Everlasting Gold", 
+                    "Thorncrown of Blasting", "Throne of Command (Major Artifact)", "Trueforge (Major Artifact)", "Was Scepter (Major Artifact)", "Winter Collector (Major Artifact)"]
+    possibility = artifact * random.randrange(1, 101, 1)
+    if possibility > 95 and possibility < 99 :
+        details = "%s%s" % (details, lesserList[random.randrange(0, lesserList.__len__(), 1)])
+    if possibility > 98 :
+        details = "%s%s" % (details, majorList[random.randrange(0, majorList.__len__(), 1)])
     details = "%s%s" % (details, "\n-Cursed-------------------------------------\n")
     return details    
 
 def Cursed(cr, cursed) :
     details = ""
-    possibility = artObj * random.randrange(1, 101, 1)
-    if possibility > 34 :
+    cursedList = ["Incense of obsession", "Ring of clumsiness", "Amulet of inescapable location", "Stone of weight", "Bracers of defenselessness", "Gauntlets of fumbling", "sword, cursed", "Armor of rage", 
+                    "Medallion of thought projection", "Flask of curses", "Dust of sneezing and choking", "Helm of opposite alignment", "Potion of poison", "Broom of animated attack", "Robe of powerlessness", 
+                    "Vacuous grimoire", "Spear, cursed backbiter", "Armor of arrow attraction", "Net of snaring", "Bag of devouring", "Mace of blood", "Robe of vermin", "Periapt of foul rotting", 
+                    "Sword, berserking", "Boots of dancing", "Crystal hypnosis ball", "Necklace of strangulation", "Poisonous cloak", "Scarab of death"]
+    possibility = cursed * random.randrange(1, 101, 1)
+    if possibility > 89 :
+        details = "%s%s" % (details, cursedList[random.randrange(0, cursedList.__len__(), 1)])
     details = "%s%s" % (details, "\n-Intelligent--------------------------------\n")
     return details    
 
 def Intelligent(cr, intelligent) :
     details = ""
-    possibility = artObj * random.randrange(1, 101, 1)
-    if possibility > 34 :
+    intemIntellList = [["10", "0", "0"], ["11", "+200 gp", "0"], ["12", "+500 gp", "+1"], ["13", "+700 gp", "+1"], ["14", "+1,000 gp", "+2"], ["15", "+1,400 gp", "+2"], ["16", "+2,000 gp", "+3"], 
+                        ["17", "+2,800 gp", "+3"], ["18", "+4,000 gp", "+4"], ["19", "+5,200 gp", "+4"], ["20", "+8,000 gp", "+5"]]
+    alignmentList = ["Chaotic good", "Chaotic neutral*", "Chaotic evil", "Neutral evil*", "Lawful evil", "Lawful good", "Lawful neutral*", "Neutral good*", "Neutral"]
+    sensesList = [["Empathy", "0", "0"], ["Speech", "+500 gp", "0"], ["Telepathy", "+1,000 gp", "+1"], ["Senses (30 ft.)", "0", "0"], ["Senses (60 ft.)", "+500 gp", "0"], 
+                    ["Senses (120 ft.)", "+1,000 gp", "0"], ["Darkvision", "+500 gp", "0"], ["Blindsense", "+5,000 gp", "+1"], ["Read languages", "+1,000 gp", "+1"], ["Read magic", "+2,000 gp", "+1"]]
+    powersList = [["Item can cast a 0-level spell at will", "+1,000 gp", "+1"], ["Item can cast a 1st-level spell 3/day", "+1,200 gp", "+1"], ["Item can use magic aura on itself at will", "+2,000 gp", "+1"], 
+                    ["Item can cast a 2nd-level spell 1/day", "+2,400 gp", "+1"], ["Item has 5 ranks in one skill*", "+2,500 gp", "+1"], 
+                    ["Item can sprout limbs and move with a speed of 10 feet", "+5,000 gp", "+1"], ["Item can cast a 3rd-level spell 1/day", "+6,000 gp", "+1"], 
+                    ["Item can cast a 2nd-level spell 3/day", "+7,200 gp", "+1"], ["Item has 10 ranks in one skill*", "+10,000 gp", "+2"], 
+                    ["Item can change shape into one other form of the same size", "+10,000 gp", "+2"], ["Item can fly, as per the spell, at a speed of 30 feet", "+10,000 gp", "+2"], 
+                    ["Item can cast a 4th-level spell 1/day", "+11,200 gp", "+2"], ["Item can teleport itself 1/day", "+15,000 gp", "+2"], ["Item can cast a 3rd-level spell 3/day", "+18,000 gp", "+2"], 
+                    ["Item can cast a 4th-level spell 3/day", "+33,600 gp", "+2"]]
+    purposeList = [["Defeat/slay diametrically opposed alignment*", "+2"], ["Defeat/slay arcane spellcasters (including spellcasting monsters and those that use spell-like abilities)", "+2"], 
+                    ["Defeat/slay divine spellcasters (including divine entities and servitors)", "+2"], ["Defeat/slay non-spellcasters", "+2"], 
+                    ["Defeat/slay a particular creature type (see the bane special ability for choices)", "+2"], ["Defeat/slay a particular race or kind of creature", "+2"], 
+                    ["Defend a particular race or kind of creature", "+2"], ["Defeat/slay the servants of a specific deity", "+2"], ["Defend the servants and interests of a specific deity", "+2"], 
+                    ["Defeat/slay all (other than the item and the wielder)", "2"], ["Choose one", "2"]]
+    dedPowersList = [["Item can detect any special purpose foes within 60 feet", "+10,000 gp", "+1"], ["Item can use a 4th-level spell at will", "+56,000 gp", "+2"], 
+                        ["Wielder gets +2 luck bonus on attacks, saves, and checks", "+80,000 gp", "+2"], ["Item can use a 5th-level spell at will", "+90,000 gp", "+2"], 
+                        ["Item can use a 6th-level spell at will", "+132,000 gp", "+2"], ["Item can use a 7th-level spell at will", "+182,000 gp", "+2"], 
+                        ["Item can use true resurrection on wielder, once per month", "+200,000 gp", "+2"]]
+    baseEgoModList = [["Up to 1,000 gp", "0"], ["1,001 gp to 5,000 gp", "+1"], ["5,001 gp to 10,000 gp", "+2"], ["10,001 gp to 20,000 gp", "+3"], ["20,001 gp to 50,000 gp", "+4"], ["50,001 gp to 100,000 gp", "+6"], 
+                        ["100,001 gp to 200,000 gp", "+8"], ["200,001 gp and higher", "+12"]]
+    intMagicEquipList = ["Adamantine Battleaxe (3010 gp)", "Adamantine Battleaxe (3010 gp) (inscription provides clue to function)", "Adamantine Battleaxe (3010 gp) (sheds light)", "Adamantine Breastplate (10200 gp)", 
+                            "Adamantine Dagger (3002 gp)", "Adamantine Dagger (3002 gp) (sheds light)", "Adamantine Scale Mail (10050 gp)", "Banded Mail (+1 armor) (1400 gp)", 
+                            "Banded Mail (+1 armor, Benevolent) (3400 gp)", "Banded Mail (+1 armor, Fortification (light)) (4400 gp)", "Banded Mail (+1 armor, Ghost Touch) (16400 gp)", 
+                            "Banded Mail (+1 armor, Mirrored) (4400 gp)", "Banded Mail (+1 armor, Putrid) (11400 gp)", "Banded Mail (+1 armor, Shadow) (5150 gp)", "Banded Mail (+1 armor, Spell Storing) (4400 gp)", 
+                            "Banded Mail (+2 armor) (4400 gp)", "Banded Mail (+2 armor, Spell Resistance (13)) (16400 gp)", "Banded Mail (+3 armor) (9400 gp)", "Banded Mail (+4 armor, Defiant) (25400 gp)", 
+                            "Banded Mail (+4 armor, Poison-resistant) (18650 gp)", "Banded Mail of Luck (18900 gp)", "Bastard Sword (+1 weapon) (sheds light) (2335 gp)", "Bastard Sword (+1 weapon, Ki Focus) (8335 gp)", 
+                            "Battleaxe (+1 weapon) (2310 gp)", "Battleaxe (+1 weapon) (sheds light) (2310 gp)", "Battleaxe (+2 weapon) (8310 gp)", "Battleaxe (+2 weapon) (sheds light) (8310 gp)", 
+                            "Battlement Shield (16180 gp)", "Bolas (+1 weapon) (2305 gp)", "Bolas (+1 weapon) (design provides clue to function) (2305 gp)", 
+                            "Bolas (+1 weapon) (inscription provides clue to function) (2305 gp)", "Bolas (+1 weapon) (sheds light) (2305 gp)", "Bolas (+1 weapon, Thundering) (8305 gp)", "Bolas (+2 weapon) (8305 gp)", 
+                            "Bolas (+2 weapon) (sheds light) (8305 gp)", "Breastplate (+1 armor) (1350 gp)", "Breastplate (+1 armor, Expeditious) (5350 gp)", "Breastplate (+1 armor, Grinding) (4350 gp)", 
+                            "Breastplate (+1 armor, Impervious) (4350 gp)", "Breastplate (+1 armor, Warding) (4350 gp)", "Breastplate (+2 armor) (4350 gp)", "Breastplate (+4 armor, Bolstering) (25350 gp)", 
+                            "Breastplate (+4 armor, Warding) (25350 gp)", "Buccaneer's Breastplate (23850 gp)", "Buckler (+1 shield) (1155 gp)", "Buckler (+1 shield, Arrow Catching) (4155 gp)", 
+                            "Buckler (+1 shield, Defiant) (4155 gp)", "Buckler (+1 shield, Grinding) (4155 gp)", "Buckler (+1 shield, Mirrored) (4155 gp)", "Buckler (+2 shield) (4155 gp)", 
+                            "Buckler (+2 shield, Rallying) (9155 gp)", "Buckler (+3 shield, Bashing) (16155 gp)", "Buckler (+3 shield, Clangorous) (16155 gp)", "Buckler (+4 shield) (16155 gp)", 
+                            "Burglar's Buckler (4655 gp)", "Caster's Shield (3153 gp)", "Celestial Armor (22400 gp)", "Chain Shirt (+1 armor) (1250 gp)", "Chain Shirt (+1 armor, Bitter) (4250 gp)", 
+                            "Chain Shirt (+1 armor, Brawling) (4250 gp)", "Chain Shirt (+1 armor, Fortification (moderate)) (16250 gp)", "Chain Shirt (+1 armor, Ghost Touch) (16250 gp)", 
+                            "Chain Shirt (+1 armor, Grinding) (4250 gp)", "Chain Shirt (+1 armor, Mirrored) (4250 gp)", "Chain Shirt (+1 armor, Radiant) (8750 gp)", "Chain Shirt (+2 armor) (4250 gp)", 
+                            "Chain Shirt (+3 armor) (9250 gp)", "Chain Shirt (+3 armor, Dastard) (16250 gp)", "Chain Shirt (+4 armor) (16250 gp)", "Chainmail (+1 armor) (1300 gp)", 
+                            "Chainmail (+1 armor, Bitter) (4300 gp)", "Chainmail (+1 armor, Dastard) (4300 gp)", "Chainmail (+1 armor, Deathless) (4300 gp)", "Chainmail (+1 armor, Fortification (light)) (4300 gp)", 
+                            "Chainmail (+1 armor, Stanching) (4300 gp)", "Chainmail (+2 armor) (4300 gp)", "Chainmail (+2 armor, Glamered) (7000 gp)", "Chainmail (+3 armor, Mirrored) (16300 gp)", 
+                            "Chainmail (+3 armor, Stanching) (16300 gp)", "Chainmail (+4 armor, Benevolent) (18300 gp)", "Club (+1 weapon) (2300 gp)", "Club (+1 weapon) (design provides clue to function) (2300 gp)", 
+                            "Club (+1 weapon) (inscription provides clue to function) (2300 gp)", "Club (+1 weapon) (sheds light) (2300 gp)", "Club (+1 weapon, Corrosive) (sheds light) (8300 gp)", 
+                            "Club (+1 weapon, Frost) (8300 gp)", "Club (+1 weapon, Seaborne) (8300 gp)", "Club (+1 weapon, Valiant) (inscription provides clue to function) (8300 gp)", 
+                            "Club (+1 weapon, Valiant) (sheds light) (8300 gp)", "Club (+2 weapon) (8300 gp)", "Cold Iron Masterwork Longsword (330 gp)", 
+                            "Cold Iron Masterwork Longsword (330 gp) (design provides clue to function)", "Cold Iron Masterwork Longsword (330 gp) (sheds light)", 
+                            "Composite Longbow (+1 Str bonus) (+1 weapon) (2500 gp)", "Composite Longbow (+1 Str bonus) (+1 weapon) (inscription provides clue to function) (2500 gp)", 
+                            "Composite Longbow (+1 Str bonus) (+1 weapon, Shock) (sheds light) (8500 gp)", "Composite Longbow (+1 weapon) (2400 gp)", "Composite Longbow (+2 Str bonus) (+1 weapon) (2600 gp)", 
+                            "Composite Longbow (+2 Str bonus) (+2 weapon) (8600 gp)", "Composite Longbow (+2 weapon) (sheds light) (8400 gp)", "Composite Longbow (+3 Str bonus) (+2 weapon) (8700 gp)", 
+                            "Composite Longbow (+4 Str bonus) (+1 weapon) (2800 gp)", "Composite Longbow (+4 Str bonus) (+1 weapon) (sheds light) (2800 gp)", "Composite Shortbow (+1 Str bonus) (+1 weapon) (2450 gp)", 
+                            "Composite Shortbow (+1 Str bonus) (+1 weapon) (sheds light) (2450 gp)", "Composite Shortbow (+1 Str bonus) (+1 weapon, Thundering) (8450 gp)", 
+                            "Composite Shortbow (+1 Str bonus) (+2 weapon, Bane) (design provides clue to function) (18450 gp)", "Composite Shortbow (+1 weapon) (2375 gp)", 
+                            "Composite Shortbow (+1 weapon) (inscription provides clue to function) (2375 gp)", "Composite Shortbow (+1 weapon) (sheds light) (2375 gp)", 
+                            "Composite Shortbow (+2 Str bonus) (+1 weapon) (2525 gp)", "Composite Shortbow (+2 Str bonus) (+1 weapon) (sheds light) (2525 gp)", 
+                            "Composite Shortbow (+2 Str bonus) (+1 weapon, Seeking) (8525 gp)", "Composite Shortbow (+2 weapon) (sheds light) (8375 gp)", 
+                            "Composite Shortbow (+3 weapon) (inscription provides clue to function) (18375 gp)", "Dagger (+1 weapon) (2302 gp)", "Dagger (+1 weapon) (design provides clue to function) (2302 gp)", 
+                            "Dagger (+1 weapon) (sheds light) (2302 gp)", "Dagger (+1 weapon, Ominous) (8302 gp)", "Dagger (+1 weapon, Thundering) (design provides clue to function) (8302 gp)", 
+                            "Dagger (+1 weapon, Vicious) (8302 gp)", "Dagger (+2 weapon, Unholy) (32302 gp)", "Dagger (+3 weapon, Frost) (32302 gp)", "Dagger (+3 weapon, Jurist) (32302 gp)", 
+                            "Darkleaf Studded Leather Armor (775 gp)", "Darkwood Buckler (203 gp)", "Darkwood Shield (257 gp)", "Dart (+1 weapon) (2300 gp 5 sp)", 
+                            "Dart (+1 weapon) (inscription provides clue to function) (2300 gp 5 sp)", "Dart (+1 weapon) (sheds light) (2300 gp 5 sp)", "Dart (+2 weapon) (8300 gp 5 sp)", 
+                            "Dart (+2 weapon) (sheds light) (8300 gp 5 sp)", "Disarming Blade (17820 gp)", "Disarming Blade (17820 gp) (sheds light)", "Dragonhide Half-plate (silver dragon) (1500 gp)", 
+                            "Dragonhide Plate (3300 gp)", "Dust Bolt (1730 gp)", "Dust Bolt (1730 gp) (design provides clue to function)", "Dust Bolt (1730 gp) (sheds light)", "Dustburst Bullet (196 gp)", 
+                            "Dwarven Plate (16500 gp)", "Dwarven Waraxe (+1 weapon) (2330 gp)", "Dwarven Waraxe (+1 weapon) (sheds light) (2330 gp)", "Dwarven Waraxe (+1 weapon, Defending) (8330 gp)", 
+                            "Dwarven Waraxe (+2 weapon) (8330 gp)", "Dwarven Waraxe (+2 weapon, Flaming Burst) (32330 gp)", "Dwarven Waraxe (+3 weapon) (18330 gp)", "Eel Hide Leather Armor (1210 gp)", 
+                            "Elysian Bronze Full Plate (4500 gp)", "Elysian Bronze Splint Mail (3200 gp)", "Falchion (+1 weapon) (2375 gp)", "Falchion (+1 weapon, Keen) (8375 gp)", "Falchion (+2 weapon) (8375 gp)", 
+                            "Falchion (+2 weapon) (sheds light) (8375 gp)", "Fire-forged Steel Half-plate (3600 gp)", "Fortress Shield (19180 gp)", "Frost-forged Steel Full Plate (4500 gp)", 
+                            "Frost-forged Steel Scale Mail (2550 gp)", "Full Plate (+1 armor) (2650 gp)", "Full Plate (+1 armor, Bitter) (5650 gp)", "Full Plate (+1 armor, Brawling) (5650 gp)", 
+                            "Full Plate (+1 armor, Fortification (moderate)) (17650 gp)", "Full Plate (+1 armor, Mirrored) (5650 gp)", "Full Plate (+1 armor, Poison-resistant) (4900 gp)", 
+                            "Full Plate (+2 armor) (5650 gp)", "Full Plate (+3 armor) (10650 gp)", "Full Plate (+3 armor, Poison-resistant) (12900 gp)", "Full Plate (+4 armor) (17650 gp)", 
+                            "Full Plate (+4 armor, Champion) (26650 gp)", "Gauntlet (+1 weapon) (2302 gp)", "Gauntlet (+1 weapon) (design provides clue to function) (2302 gp)", 
+                            "Gauntlet (+1 weapon) (sheds light) (2302 gp)", "Gauntlet (+1 weapon, Bane (humanoids, human)) (sheds light) (8302 gp)", "Gauntlet (+2 weapon) (sheds light) (8302 gp)", 
+                            "Gauntlet (+2 weapon, Shock) (18302 gp)", "Glaive (+1 weapon) (2308 gp)", "Glaive (+2 weapon) (8308 gp)", "Glaive (+2 weapon, Icy Burst) (32308 gp)", "Greataxe (+1 weapon) (2320 gp)", 
+                            "Greataxe (+1 weapon) (inscription provides clue to function) (2320 gp)", "Greataxe (+1 weapon) (sheds light) (2320 gp)", "Greataxe (+1 weapon, Bane (animals)) (8320 gp)", 
+                            "Greataxe (+1 weapon, Cunning) (sheds light) (8320 gp)", "Greataxe (+1 weapon, Glamered) (6320 gp)", "Greataxe (+1 weapon, Spell Storing) (design provides clue to function) (8320 gp)", 
+                            "Greataxe (+2 weapon) (8320 gp)", "Greataxe (+2 weapon) (sheds light) (8320 gp)", "Greataxe (+2 weapon, Ki Focus) (18320 gp)", "Greatclub (+1 weapon) (2305 gp)", 
+                            "Greatclub (+1 weapon) (design provides clue to function) (2305 gp)", "Greatclub (+1 weapon) (sheds light) (2305 gp)", "Greatclub (+1 weapon, Bane (undead)) (8305 gp)", 
+                            "Greatclub (+1 weapon, Flaming) (8305 gp)", "Greatclub (+2 weapon) (8305 gp)", "Greatclub (+3 weapon, Frost) (32305 gp)", "Greater Burrowing Bullet (3447 gp)", 
+                            "Greater Burrowing Bullet (3447 gp) (design provides clue to function)", "Greater Burrowing Bullet (3447 gp) (inscription provides clue to function)", 
+                            "Greater Burrowing Bullet (3447 gp) (sheds light)", "Greater Hushing Arrow (1047 gp)", "Greater Hushing Arrow (1047 gp) (inscription provides clue to function)", 
+                            "Greater Hushing Arrow (1047 gp) (sheds light)", "Greater Slaying Arrow (aberrations) (4057 gp)", "Greater Slaying Arrow (constructs) (4057 gp) (inscription provides clue to function)", 
+                            "Greater Slaying Arrow (fey) (4057 gp)", "Greater Slaying Arrow (humanoids, giants) (4057 gp)", "Greater Slaying Arrow (humanoids, giants) (4057 gp) (inscription provides clue to function)", 
+                            "Greater Slaying Arrow (humanoids, human) (4057 gp) (sheds light)", "Greater Slaying Arrow (humanoids, orc) (4057 gp)", "Greater Slaying Arrow (humanoids, reptilian) (4057 gp)", 
+                            "Greater Slaying Arrow (magical beasts) (4057 gp) (inscription provides clue to function)", "Greater Slaying Arrow (monstrous humanoids) (4057 gp)", 
+                            "Greater Slaying Arrow (outsiders, earth) (4057 gp) (inscription provides clue to function)", "Greater Slaying Arrow (outsiders, lawful) (4057 gp)", "Greatsword (+1 weapon) (2350 gp)", 
+                            "Greatsword (+1 weapon) (design provides clue to function) (2350 gp)", "Greatsword (+1 weapon) (inscription provides clue to function) (2350 gp)", 
+                            "Greatsword (+1 weapon) (sheds light) (2350 gp)", "Greatsword (+1 weapon, Furious) (8350 gp)", "Greatsword (+1 weapon, Glamered) (6350 gp)", 
+                            "Greatsword (+1 weapon, Mighty Cleaving) (8350 gp)", "Greatsword (+1 weapon, Shock) (8350 gp)", "Greatsword (+2 weapon) (8350 gp)", 
+                            "Greatsword (+2 weapon) (design provides clue to function) (8350 gp)", "Halberd (+1 weapon) (2310 gp)", "Halberd (+1 weapon) (sheds light) (2310 gp)", "Half-plate (+1 armor) (1750 gp)", 
+                            "Half-plate (+1 armor, Balanced) (4750 gp)", "Half-plate (+1 armor, Brawling) (4750 gp)", "Half-plate (+1 armor, Defiant) (4750 gp)", "Half-plate (+1 armor, Glamered) (4450 gp)", 
+                            "Half-plate (+1 armor, Titanic) (16750 gp)", "Half-plate (+2 armor) (4750 gp)", "Half-plate (+4 armor, Benevolent) (18750 gp)", "Handaxe (+1 weapon) (2306 gp)", 
+                            "Handaxe (+1 weapon) (sheds light) (2306 gp)", "Handaxe (+2 weapon) (8306 gp)", "Heavy Crossbow (+1 weapon) (2350 gp)", "Heavy Crossbow (+1 weapon) (sheds light) (2350 gp)", 
+                            "Heavy Crossbow (+1 weapon, Holy) (sheds light) (18350 gp)", "Heavy Crossbow (+2 weapon) (sheds light) (8350 gp)", "Heavy Flail (+1 weapon) (sheds light) (2315 gp)", 
+                            "Heavy Mace (+1 weapon) (2312 gp)", "Heavy Mace (+1 weapon) (design provides clue to function) (2312 gp)", "Heavy Mace (+1 weapon) (inscription provides clue to function) (2312 gp)", 
+                            "Heavy Mace (+1 weapon) (sheds light) (2312 gp)", "Heavy Mace (+2 weapon) (sheds light) (8312 gp)", "Heavy Steel Shield (+1 shield) (1170 gp)", 
+                            "Heavy Steel Shield (+1 shield, Animated) (9170 gp)", "Heavy Steel Shield (+1 shield, Bashing) (4170 gp)", "Heavy Steel Shield (+1 shield, Blinding) (4170 gp)", 
+                            "Heavy Steel Shield (+1 shield, Clangorous) (4170 gp)", "Heavy Steel Shield (+1 shield, Grinding) (4170 gp)", "Heavy Steel Shield (+1 shield, Impervious) (4170 gp)", 
+                            "Heavy Steel Shield (+1 shield, Radiant) (8670 gp)", "Heavy Steel Shield (+1 shield, Ramming) (4170 gp)", "Heavy Steel Shield (+1 shield, Wild) (16170 gp)", 
+                            "Heavy Steel Shield (+2 shield) (4170 gp)", "Heavy Steel Shield (+2 shield, Spell Resistance (13)) (16170 gp)", "Heavy Steel Shield (+3 shield) (9170 gp)", 
+                            "Heavy Steel Shield (+4 shield, Poison-resistant) (18420 gp)", "Heavy Wooden Shield (+1 shield) (1157 gp)", "Heavy Wooden Shield (+1 shield, Arrow Catching) (4157 gp)", 
+                            "Heavy Wooden Shield (+1 shield, Defiant) (4157 gp)", "Heavy Wooden Shield (+1 shield, Fortification (light)) (4157 gp)", "Heavy Wooden Shield (+1 shield, Merging) (9157 gp)", 
+                            "Heavy Wooden Shield (+1 shield, Ramming) (4157 gp)", "Heavy Wooden Shield (+1 shield, Spell Resistance (15)) (16157 gp)", "Heavy Wooden Shield (+2 shield) (4157 gp)", 
+                            "Heavy Wooden Shield (+4 shield, Impervious) (25157 gp)", "Hide (+1 armor) (1165 gp)", "Hide (+1 armor, Bitter) (4165 gp)", "Hide (+1 armor, Dastard) (4165 gp)", 
+                            "Hide (+1 armor, Grinding) (4165 gp)", "Hide (+1 armor, Rallying) (6165 gp)", "Hide (+2 armor) (4165 gp)", "Hide (+2 armor, Creeping) (9165 gp)", "Hide (+3 armor) (9165 gp)", 
+                            "Hushing Arrow (547 gp)", "Hushing Arrow (547 gp) (sheds light)", "Javelin of Lightning (1500 gp)", "Javelin of Lightning (1500 gp) (inscription provides clue to function)", 
+                            "Lance (+1 weapon) (2310 gp)", "Lance (+1 weapon) (design provides clue to function) (2310 gp)", "Lance (+1 weapon) (inscription provides clue to function) (2310 gp)", 
+                            "Lance (+1 weapon) (sheds light) (2310 gp)", "Lance (+1 weapon, Ki Focus) (inscription provides clue to function) (8310 gp)", "Lance (+1 weapon, Throwing) (8310 gp)", 
+                            "Lance (+2 weapon) (inscription provides clue to function) (8310 gp)", "Lance of Jousting (4310 gp)", "Lance of Jousting (4310 gp) (design provides clue to function)", 
+                            "Lance of Jousting (4310 gp) (sheds light)", "Lash of the Howler (18305 gp)", "Leather Armor (+1 armor) (1160 gp)", "Leather Armor (+1 armor, Bolstering) (4160 gp)", 
+                            "Leather Armor (+1 armor, Brawling) (4160 gp)", "Leather Armor (+1 armor, Dastard) (4160 gp)", "Leather Armor (+1 armor, Poison-resistant) (3410 gp)", 
+                            "Leather Armor (+1 armor, Spell Resistance (15)) (16160 gp)", "Leather Armor (+1 armor, Warding) (4160 gp)", "Leather Armor (+2 armor) (4160 gp)", 
+                            "Leather Armor (+2 armor, Slick) (7910 gp)", "Leather Armor (+3 armor) (9160 gp)", "Leather Armor (+3 armor, Balanced) (16160 gp)", "Leather Armor (+4 armor) (16160 gp)", 
+                            "Leather Armor (+4 armor, Bolstering) (25160 gp)", "Leather Armor (+4 armor, Defiant) (25160 gp)", "Light Crossbow (+1 weapon) (2335 gp)", 
+                            "Light Crossbow (+1 weapon) (inscription provides clue to function) (2335 gp)", "Light Crossbow (+1 weapon) (sheds light) (2335 gp)", "Light Crossbow (+1 weapon, Distance) (8335 gp)", 
+                            "Light Crossbow (+2 weapon, Distance) (sheds light) (18335 gp)", "Light Flail (+1 weapon) (design provides clue to function) (2308 gp)", 
+                            "Light Flail (+1 weapon) (inscription provides clue to function) (2308 gp)", "Light Flail (+1 weapon) (sheds light) (2308 gp)", "Light Flail (+2 weapon) (8308 gp)", 
+                            "Light Flail (+2 weapon) (inscription provides clue to function) (8308 gp)", "Light Hammer (+1 weapon) (2301 gp)", "Light Hammer (+1 weapon) (sheds light) (2301 gp)", 
+                            "Light Mace (+1 weapon) (2305 gp)", "Light Mace (+1 weapon) (design provides clue to function) (2305 gp)", "Light Mace (+1 weapon) (inscription provides clue to function) (2305 gp)", 
+                            "Light Mace (+1 weapon) (sheds light) (2305 gp)", "Light Mace (+1 weapon, Ominous) (8305 gp)", "Light Mace (+1 weapon, Valiant) (sheds light) (8305 gp)", 
+                            "Light Mace (+1 weapon, Wounding) (18305 gp)", "Light Mace (+2 weapon) (design provides clue to function) (8305 gp)", "Light Pick (+1 weapon) (2304 gp)", 
+                            "Light Pick (+1 weapon) (inscription provides clue to function) (2304 gp)", "Light Pick (+1 weapon) (sheds light) (2304 gp)", "Light Steel Shield (+1 shield) (1159 gp)", 
+                            "Light Steel Shield (+1 shield, Animated) (9159 gp)", "Light Steel Shield (+1 shield, Arrow Catching) (4159 gp)", "Light Steel Shield (+1 shield, Fortification (light)) (4159 gp)", 
+                            "Light Steel Shield (+1 shield, Poison-resistant) (3409 gp)", "Light Steel Shield (+1 shield, Ramming) (4159 gp)", "Light Steel Shield (+2 shield) (4159 gp)", 
+                            "Light Steel Shield (+2 shield, Merging) (16159 gp)", "Light Steel Shield (+2 shield, Rallying) (9159 gp)", "Light Steel Shield (+2 shield, Spell Resistance (13)) (16159 gp)", 
+                            "Light Steel Shield (+3 shield) (9159 gp)", "Light Steel Shield (+3 shield, Defiant) (16159 gp)", "Light Steel Shield (+3 shield, Impervious) (16159 gp)", 
+                            "Light Steel Shield (+4 shield) (16159 gp)", "Light Steel Shield (+4 shield, Arrow Catching) (25159 gp)", "Light Steel Shield (+4 shield, Ramming) (25159 gp)", 
+                            "Light Wooden Shield (+1 shield) (1153 gp)", "Light Wooden Shield (+1 shield, Animated) (9153 gp)", "Light Wooden Shield (+1 shield, Fortification (moderate)) (16153 gp)", 
+                            "Light Wooden Shield (+1 shield, Impervious) (4153 gp)", "Light Wooden Shield (+1 shield, Spell Resistance (13)) (9153 gp)", "Light Wooden Shield (+2 shield) (4153 gp)", 
+                            "Light Wooden Shield (+2 shield, Spell Resistance (13)) (16153 gp)", "Light Wooden Shield (+3 shield) (9153 gp)", "Light Wooden Shield (+3 shield, Grinding) (16153 gp)", 
+                            "Light Wooden Shield (+3 shield, Mirrored) (16153 gp)", "Light Wooden Shield (+4 shield) (16153 gp)", "Living Steel Banded Mail (1750 gp)", "Living Steel Breastplate (1200 gp)", 
+                            "Living Steel Heavy Shield (120 gp)", "Longbow (+1 weapon) (2375 gp)", "Longbow (+1 weapon) (design provides clue to function) (2375 gp)", "Longbow (+1 weapon) (sheds light) (2375 gp)", 
+                            "Longbow (+1 weapon, Bane) (sheds light) (8375 gp)", "Longbow (+1 weapon, Corrosive) (8375 gp)", "Longbow (+2 weapon) (8375 gp)", 
+                            "Longbow (+2 weapon) (design provides clue to function) (8375 gp)", "Longbow (+2 weapon) (inscription provides clue to function) (8375 gp)", "Longbow (+2 weapon) (sheds light) (8375 gp)", 
+                            "Longbow (+3 weapon) (18375 gp)", "Longbow (+3 weapon, Jurist) (sheds light) (32375 gp)", "Longspear (+1 weapon) (2305 gp)", 
+                            "Longspear (+1 weapon) (design provides clue to function) (2305 gp)", "Longspear (+1 weapon) (inscription provides clue to function) (2305 gp)", 
+                            "Longspear (+1 weapon) (sheds light) (2305 gp)", "Longspear (+1 weapon, Conductive) (sheds light) (8305 gp)", "Longspear (+1 weapon, Flaming) (8305 gp)", 
+                            "Longspear (+1 weapon, Mighty Cleaving) (8305 gp)", "Longspear (+1 weapon, Neutralizing) (8305 gp)", "Longspear (+2 weapon, Quenching) (sheds light) (18305 gp)", 
+                            "Longsword (+1 weapon) (2315 gp)", "Longsword (+1 weapon) (design provides clue to function) (2315 gp)", "Longsword (+1 weapon) (inscription provides clue to function) (2315 gp)", 
+                            "Longsword (+1 weapon) (sheds light) (2315 gp)", "Longsword (+1 weapon, Courageous) (sheds light) (8315 gp)", "Longsword (+1 weapon, Defending) (8315 gp)", 
+                            "Longsword (+1 weapon, Frost) (8315 gp)", "Longsword (+1 weapon, Shock) (8315 gp)", "Longsword (+1 weapon, Spell Storing) (8315 gp)", "Longsword (+2 weapon) (8315 gp)", 
+                            "Longsword (+2 weapon) (inscription provides clue to function) (8315 gp)", "Mistmail (2250 gp)", "Mithral Heavy Shield (1020 gp)", "Mithral Shirt (1100 gp)", "Mithral Splint Mail (9200 gp)", 
+                            "Morningstar (+1 weapon) (2308 gp)", "Morningstar (+1 weapon) (design provides clue to function) (2308 gp)", "Morningstar (+1 weapon) (sheds light) (2308 gp)", 
+                            "Morningstar (+1 weapon, Throwing) (8308 gp)", "Morningstar (+2 weapon) (8308 gp)", "Morningstar (+2 weapon, Anarchic) (inscription provides clue to function) (32308 gp)", 
+                            "Nunchaku (+1 weapon) (2302 gp)", "Nunchaku (+1 weapon) (design provides clue to function) (2302 gp)", "Nunchaku (+1 weapon, Conductive) (sheds light) (8302 gp)", 
+                            "Nunchaku (+1 weapon, Merciful) (sheds light) (8302 gp)", "Padded Armor (+1 armor) (1155 gp)", "Padded Armor (+1 armor, Bitter) (4155 gp)", "Padded Armor (+1 armor, Dastard) (4155 gp)", 
+                            "Padded Armor (+1 armor, Delving) (11155 gp)", "Padded Armor (+1 armor, Mirrored) (4155 gp)", "Padded Armor (+2 armor) (4155 gp)", "Padded Armor (+3 armor) (9155 gp)", 
+                            "Padded Armor (+4 armor, Mirrored) (25155 gp)", "Quarterstaff (+1 weapon) (2600 gp)", "Quarterstaff (+1 weapon) (design provides clue to function) (2600 gp)", 
+                            "Quarterstaff (+1 weapon) (inscription provides clue to function) (2600 gp)", "Quarterstaff (+1 weapon) (sheds light) (2600 gp)", 
+                            "Quarterstaff (+1 weapon, Thundering) (sheds light) (8600 gp)", "Quarterstaff (+1 weapon, Vicious) (sheds light) (8600 gp)", "Quarterstaff (+2 weapon) (sheds light) (8600 gp)", 
+                            "Rapier (+1 weapon) (2320 gp)", "Rapier (+1 weapon) (inscription provides clue to function) (2320 gp)", "Rapier (+1 weapon) (sheds light) (2320 gp)", "Rapier (+1 weapon, Flaming) (8320 gp)", 
+                            "Rapier (+1 weapon, Limning) (8320 gp)", "Rapier (+2 weapon) (8320 gp)", "Rapier (+2 weapon) (sheds light) (8320 gp)", "Rapier (+3 weapon, Bane (dragons)) (sheds light) (32320 gp)", 
+                            "Rapier (+3 weapon, Quenching) (sheds light) (32320 gp)", "Sai (+1 weapon) (2301 gp)", "Sai (+1 weapon) (inscription provides clue to function) (2301 gp)", 
+                            "Sai (+1 weapon) (sheds light) (2301 gp)", "Sai (+1 weapon, Corrosive) (8301 gp)", "Sai (+1 weapon, Throwing) (8301 gp)", "Sai (+2 weapon) (inscription provides clue to function) (8301 gp)", 
+                            "Sap (+1 weapon) (2301 gp)", "Sap (+1 weapon) (sheds light) (2301 gp)", "Sap (+2 weapon, Holy) (32301 gp)", "Scale Mail (+1 armor) (1200 gp)", "Scale Mail (+1 armor, Defiant) (4200 gp)", 
+                            "Scale Mail (+1 armor, Jousting) (4950 gp)", "Scale Mail (+1 armor, Mirrored) (4200 gp)", "Scale Mail (+1 armor, Poison-resistant) (3450 gp)", "Scale Mail (+1 armor, Rallying) (6200 gp)", 
+                            "Scale Mail (+1 armor, Stanching) (4200 gp)", "Scale Mail (+2 armor) (4200 gp)", "Scale Mail (+3 armor, Dastard) (16200 gp)", "Scale Mail (+3 armor, Defiant) (16200 gp)",
+                            "Scale Mail (+3 armor, Spell Storing) (16200 gp)", "Scale Mail (+4 armor) (16200 gp)", "Screaming Bolt (267 gp)", "Screaming Bolt (267 gp) (inscription provides clue to function)", 
+                            "Scythe (+1 weapon) (2318 gp)", "Scythe (+1 weapon) (inscription provides clue to function) (2318 gp)", "Scythe (+1 weapon) (sheds light) (2318 gp)", "Scythe (+1 weapon, Ki Focus) (8318 gp)", 
+                            "Scythe (+2 weapon) (8318 gp)", "Scythe (+2 weapon) (design provides clue to function) (8318 gp)", "Scythe (+2 weapon) (sheds light) (8318 gp)", "Scythe (+2 weapon, Corrosive) (18318 gp)", 
+                            "Scythe (+3 weapon) (design provides clue to function) (18318 gp)", "Searing Arrow (1516 gp)", "Searing Arrow (1516 gp) (sheds light)", "Shieldsplitter Lance (18310 gp) (sheds light)", 
+                            "Shortbow (+1 weapon) (2330 gp)", "Shortbow (+1 weapon) (design provides clue to function) (2330 gp)", "Shortbow (+1 weapon) (inscription provides clue to function) (2330 gp)", 
+                            "Shortbow (+1 weapon) (sheds light) (2330 gp)", "Shortbow (+1 weapon, Bane) (8330 gp)", "Shortbow (+1 weapon, Frost) (8330 gp)", "Shortbow (+1 weapon, Shock) (8330 gp)", 
+                            "Shortbow (+1 weapon, Thundering) (8330 gp)", "Shortbow (+2 weapon) (inscription provides clue to function) (8330 gp)", "Shortbow (+3 weapon, Cunning) (sheds light) (32330 gp)", 
+                            "Shortspear (+1 weapon) (2301 gp)", "Shortspear (+1 weapon) (sheds light) (2301 gp)", "Shortspear (+1 weapon, Jurist) (8301 gp)", "Shortspear (+1 weapon, Limning) (sheds light) (8301 gp)", 
+                            "Shortspear (+2 weapon) (8301 gp)", "Shortspear (+2 weapon) (sheds light) (8301 gp)", "Shortspear (+2 weapon, Glorious) (design provides clue to function) (32301 gp)", 
+                            "Shortsword (+1 weapon) (2310 gp)", "Shortsword (+1 weapon) (inscription provides clue to function) (2310 gp)", "Shortsword (+1 weapon) (sheds light) (2310 gp)", 
+                            "Shortsword (+1 weapon, Bane (aberrations)) (8310 gp)", "Shortsword (+1 weapon, Flaming) (8310 gp)", "Shortsword (+1 weapon, Grayflame) (8310 gp)", 
+                            "Shortsword (+1 weapon, Limning) (sheds light) (8310 gp)", "Shortsword (+1 weapon, Mighty Cleaving) (sheds light) (8310 gp)", "Shortsword (+2 weapon) (8310 gp)", 
+                            "Shortsword (+2 weapon) (sheds light) (8310 gp)", "Sickle (+1 weapon) (2306 gp)", "Sickle (+1 weapon) (sheds light) (2306 gp)", "Sickle (+2 weapon) (8306 gp)", 
+                            "Sickle (+3 weapon, Thundering) (32306 gp)", "Sizzling Arrow (1516 gp)", "Sizzling Arrow (1516 gp) (sheds light)", "Slaying Arrow (humanoids, elf) (2282 gp) (sheds light)", 
+                            "Slaying Arrow (humanoids, orc) (2282 gp)", "Slaying Arrow (humanoids, reptilian) (2282 gp)", "Slaying Arrow (magical beasts) (2282 gp)", "Slaying Arrow (monstrous humanoids) (2282 gp)", 
+                            "Slaying Arrow (outsiders, lawful) (2282 gp)", "Slaying Arrow (undead) (2282 gp)", "Sleep Arrow (132 gp)", "Sleep Arrow (132 gp) (design provides clue to function)", 
+                            "Sleep Arrow (132 gp) (sheds light)", "Sling (+1 weapon) (2300 gp)", "Sling (+1 weapon) (design provides clue to function) (2300 gp)", "Sling (+1 weapon) (sheds light) (2300 gp)", 
+                            "Sling (+1 weapon, Frost) (8300 gp)", "Sling (+2 weapon) (inscription provides clue to function) (8300 gp)", "Sling (+2 weapon, Igniting) (32300 gp)", "Spear (+1 weapon) (2302 gp)", 
+                            "Spear (+1 weapon) (design provides clue to function) (2302 gp)", "Spear (+1 weapon) (sheds light) (2302 gp)", "Spear (+1 weapon, Bane (outsiders, lawful)) (sheds light) (8302 gp)", 
+                            "Spear (+1 weapon, Corrosive) (8302 gp)", "Spear (+1 weapon, Cunning) (8302 gp)", "Spear (+1 weapon, Frost) (sheds light) (8302 gp)", "Spear (+1 weapon, Ominous) (8302 gp)", 
+                            "Spear (+2 weapon) (8302 gp)", "Spear (+2 weapon) (inscription provides clue to function) (8302 gp)", "Splint Mail (+1 armor) (1350 gp)", "Splint Mail (+1 armor, Defiant) (4350 gp)", 
+                            "Splint Mail (+1 armor, Expeditious) (5350 gp)", "Splint Mail (+1 armor, Invulnerability) (16350 gp)", "Splint Mail (+2 armor) (4350 gp)", "Splint Mail (+2 armor, Shadow) (8100 gp)", 
+                            "Splint Mail (+3 armor, Deathless) (16350 gp)", "Studded Leather Armor (+1 armor) (1175 gp)", "Studded Leather Armor (+1 armor, Bolstering) (4175 gp)", 
+                            "Studded Leather Armor (+1 armor, Dastard) (4175 gp)", "Studded Leather Armor (+1 armor, Fortification (light)) (4175 gp)", "Studded Leather Armor (+1 armor, Slick) (4925 gp)", 
+                            "Studded Leather Armor (+1 armor, Spell Storing) (4175 gp)", "Studded Leather Armor (+2 armor) (4175 gp)", "Studded Leather Armor (+2 armor, Glamered) (6875 gp)", "Tangle Bolt (226 gp)", 
+                            "Tangle Bolt (226 gp) (inscription provides clue to function)", "Tangle Bolt (226 gp) (sheds light)", "Tower Shield (+1 shield) (1180 gp)", "Tower Shield (+1 shield, Bashing) (4180 gp)", 
+                            "Tower Shield (+1 shield, Impervious) (4180 gp)", "Tower Shield (+2 shield) (4180 gp)", "Tower Shield (+3 shield) (9180 gp)", "Tower Shield (+4 shield, Ramming) (25180 gp)", 
+                            "Tracer Bullet (100 gp)", "Tracer Bullet (100 gp) (sheds light)", "Trident (+1 weapon) (2315 gp)", "Trident (+1 weapon) (design provides clue to function) (2315 gp)", 
+                            "Trident (+1 weapon) (inscription provides clue to function) (2315 gp)", "Trident (+1 weapon, Ghost Touch) (8315 gp)", "Trident (+3 weapon) (sheds light) (18315 gp)", 
+                            "Warhammer (+1 weapon) (2312 gp)", "Warhammer (+1 weapon) (design provides clue to function) (2312 gp)", "Warhammer (+1 weapon) (inscription provides clue to function) (2312 gp)", 
+                            "Warhammer (+1 weapon) (sheds light) (2312 gp)", "Warhammer (+1 weapon, Frost) (sheds light) (8312 gp)", "Warhammer (+2 weapon) (8312 gp)", "Warhammer (+2 weapon) (sheds light) (8312 gp)", 
+                            "Whip (+1 weapon) (2301 gp)", "Whip (+1 weapon) (inscription provides clue to function) (2301 gp)", "Whip (+1 weapon) (sheds light) (2301 gp)", "Whip (+2 weapon) (sheds light) (8301 gp)", 
+                            "Winged Shield (17257 gp)", "Zombie Skin Shield (2159 gp)"]
+    possibility = intelligent * random.randrange(1, 101, 1)
+    if possibility > 96 :
+        details = "%s%s%s%s%s%s%s%s%s%s%s%s" % (details, intemIntellList[random.randrange(0, intemIntellList.__len__(), 1)], alignmentList[random.randrange(0, alignmentList.__len__(), 1)], "\n", 
+                        sensesList[random.randrange(0, sensesList.__len__(), 1)], powersList[random.randrange(0, powersList.__len__(), 1)], "\n", purposeList[random.randrange(0, purposeList.__len__(), 1)], 
+                        dedPowersList[random.randrange(0, dedPowersList.__len__(), 1)], "\n", baseEgoModList[random.randrange(0, baseEgoModList.__len__(), 1)], 
+                        intMagicEquipList[random.randrange(0, intMagicEquipList.__len__(), 1)])
     return details   
 
 def EncouterTreasure(cr, currency = 100, artObj = 100, specialMats = 100, normEquip = 100,
-                     magicEquip = 100, pots = 100, scroll = 100, wand = 100, Staff = 100, rod = 100, ring = 100,
+                     magicEquip = 100, pots = 100, scroll = 100, wand = 100, staff = 100, rod = 100, ring = 100,
                      wonderous = 100, artifact = 100, cursed = 100, intelligent = 100) :
     details = ""
-    detail = ""
     details = Currency(cr, currency)  
-    detail = ArtObj(cr, artObj)  
-    detail = SpecialMats(cr, specialMats)  
-    detail = NormEquip(cr, normEquip)  
-    detail = MagicEquip(cr, magicEquip)   
-    detail = Pots(cr, pots)  
-    detail = Scroll(cr, scroll)  
-    detail = Wand(cr, wand)  
-    detail = Staff(cr, staff)  
-    detail = Rod(cr, rod) 
-    detail = Ring(cr, ring) 
-    detail = Wonderous(cr, wonderous)   
-    detail = Artifact(cr, artifact)   
-    detail = Cursed(cr, cursed)   
-    detail = Intelligent(cr, intelligent)
+    details = ArtObj(cr, artObj)  
+    details = SpecialMats(cr, specialMats)  
+    details = NormEquip(cr, normEquip)  
+    details = MagicEquip(cr, magicEquip)   
+    details = Pots(cr, pots)  
+    details = Scroll(cr, scroll)  
+    details = Wand(cr, wand)  
+    details = Staff(cr, staff)  
+    details = Rod(cr, rod) 
+    details = Ring(cr, ring) 
+    details = Wonderous(cr, wonderous)   
+    details = Artifact(cr, artifact)   
+    details = Cursed(cr, cursed)   
+    details = Intelligent(cr, intelligent)
 
     return details
 
 def HoardTreasure(cr, currency = 100, artObj = 100, specialMats = 100, normEquip = 100,
-                  magicEquip = 100, pots = 100, scroll = 100, wand = 100, Staff = 100, rod = 100, ring = 100,
+                  magicEquip = 100, pots = 100, scroll = 100, wand = 100, staff = 100, rod = 100, ring = 100,
                   wonderous = 100, artifact = 100, cursed = 100, intelligent = 100) :
     details = ""
-    detail = ""
     details = Currency(cr, currency)  
-    detail = ArtObj(cr, artObj)  
-    detail = SpecialMats(cr, specialMats)  
-    detail = NormEquip(cr, normEquip)  
-    detail = MagicEquip(cr, magicEquip)   
-    detail = Pots(cr, pots)  
-    detail = Scroll(cr, scroll)  
-    detail = Wand(cr, wand)  
-    detail = Staff(cr, staff)  
-    detail = Rod(cr, rod) 
-    detail = Ring(cr, ring) 
-    detail = Wonderous(cr, wonderous)   
-    detail = Artifact(cr, artifact)   
-    detail = Cursed(cr, cursed)   
-    detail = Intelligent(cr, intelligent)
+    details = ArtObj(cr, artObj)  
+    details = SpecialMats(cr, specialMats)  
+    details = NormEquip(cr, normEquip)  
+    details = MagicEquip(cr, magicEquip)   
+    details = Pots(cr, pots)  
+    details = Scroll(cr, scroll)  
+    details = Wand(cr, wand)  
+    details = Staff(cr, staff)  
+    details = Rod(cr, rod) 
+    details = Ring(cr, ring) 
+    details = Wonderous(cr, wonderous)   
+    details = Artifact(cr, artifact)   
+    details = Cursed(cr, cursed)   
+    details = Intelligent(cr, intelligent)
     return details
 
 print("hoard or encounter?\n")
