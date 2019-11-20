@@ -82,31 +82,31 @@ def ArtObj(cr, artObj) :
         if cr < 4 :
             while numArtObj > 0 :
                 value = random.randrange(1, 50, 1)
-                details = "%s%s%s%s%s" % (details, artObjList[(random.randrange(0, 155, 1))], " (", value * 10, " gp)\n")
+                details = "%s%s%s%s%s" % (details, artObjList[(random.randrange(0, artObjList.__len__(), 1))], " (", value * 10, " gp)\n")
                 numArtObj -= 1
             details = "%s%s" % (details, "\n-Special-Materials--------------------------\n")
         elif cr < 8 :
             while numArtObj > 0 :
                 value = random.randrange(1, 50, 1)
-                details = "%s%s%s%s%s" % (details, artObjList[(random.randrange(0, 155, 1))], " (", value * 15, " gp)\n")
+                details = "%s%s%s%s%s" % (details, artObjList[(random.randrange(0, artObjList.__len__(), 1))], " (", value * 15, " gp)\n")
                 numArtObj -= 1
             details = "%s%s" % (details, "\n-Special-Materials--------------------------\n")
         elif cr < 12 :
             while numArtObj > 0 :
                 value = random.randrange(1, 50, 1)
-                details = "%s%s%s%s%s" % (details, artObjList[(random.randrange(0, 155, 1))], " (", value * 30, " gp)\n")
+                details = "%s%s%s%s%s" % (details, artObjList[(random.randrange(0, artObjList.__len__(), 1))], " (", value * 30, " gp)\n")
                 numArtObj -= 1
             details = "%s%s" % (details, "\n-Special-Materials--------------------------\n")
         elif cr < 16 :
             while numArtObj > 0 :
                 value = random.randrange(1, 75, 1)
-                details = "%s%s%s%s%s" % (details, artObjList[(random.randrange(0, 155, 1))], " (", value * 45, " gp)\n")
+                details = "%s%s%s%s%s" % (details, artObjList[(random.randrange(0, artObjList.__len__(), 1))], " (", value * 45, " gp)\n")
                 numArtObj -= 1
             details = "%s%s" % (details, "\n-Special-Materials--------------------------\n")
         else :
             while numArtObj > 0 :
                 value = random.randrange(1, 100, 1)
-                details = "%s%s%s%s%s" % (details, artObjList[(random.randrange(0, 155, 1))], " (", value * 60, " gp)\n")
+                details = "%s%s%s%s%s" % (details, artObjList[(random.randrange(0, artObjList.__len__(), 1))], " (", value * 60, " gp)\n")
                 numArtObj -= 1
             details = "%s%s" % (details, "\n-Special-Materials--------------------------\n")
 
@@ -129,7 +129,7 @@ def SpecialMats(cr, specialMats) :
     possibility = specialMats * random.randrange(1, 101, 1)
     if possibility > 34 :
         while specialMatsCount > 0 :
-            details = "%s%s%s%s" % (details, int(cr*.75), " lbs of", specialMatsList[random.randrange(0, 13, 1)])
+            details = "%s%s%s%s" % (details, int(cr*.75), " lbs of", specialMatsList[random.randrange(0, specialMatsList.__len__(), 1)])
     details = "%s%s" % (details, "\n-Normal-Equipment---------------------------\n")
     return details    
 
@@ -166,9 +166,9 @@ def NormEquip(cr, normEquip) :
         counter = int(cr*10)
     if possibility > 34 :
         while counter > 0 :
-            normContain.append(random.randrange(0, 219, 1))
+            normContain.append(random.randrange(0, normEquipList.__len__(), 1))
             counter -= 1
-        for i in range(0, 219) :
+        for i in range(0, normEquipList.__len__()) :
             if normEquipList[i] in normContain :
                 count = normContain.count(normEquipList[i])
                 if count > 0 :
@@ -346,7 +346,26 @@ def MagicEquip(cr, magicEquip) :
                         "Whip (+1 weapon) (2301 gp)", "Whip (+1 weapon) (inscription provides clue to function) (2301 gp)", "Whip (+1 weapon) (sheds light) (2301 gp)", "Whip (+2 weapon) (sheds light) (8301 gp)", 
                         "Winged Shield (17257 gp)", "Zombie Skin Shield (2159 gp)"]
     possibility = magicEquip * random.randrange(1, 101, 1)
+    magicContain = []
     if possibility > 34 :
+        counter = 0
+        if cr < 5 :
+            counter = int(cr*.333)
+        elif cr < 10 :
+            counter = int(cr*.666)
+        elif cr < 15 :
+            counter = int(cr*1)
+        else :
+            counter = int(cr*1.333)
+        if possibility > 34 :
+            while counter > 0 :
+                magicContain.append(random.randrange(0, magicEquipList.__len__(), 1))
+                counter -= 1
+            for i in range(0, magicEquipList.__len__()) :
+                if magicEquipList[i] in magicContain :
+                    count = magicContain.count(magicEquipList[i])
+                    if count > 0 :
+                        details = "%s%s%s%s" % (details, count, " x ", magicEquipList[i])
     details = "%s%s" % (details, "\n-Potions------------------------------------\n")
     return details    
 
@@ -377,8 +396,27 @@ def Pots(cr, pots) :
                     "Potion of Resistance (cr, 25 gp)", "Potion of Sanctuary (cr, 50 gp)", "Potion of Shield of Faith (cr, 50 gp)", "Potion of Spider Climb (cr, 300 gp)", "Potion of Stabilize (cr, 25 gp)", 
                     "Potion of Status (cr, 300 gp)", "Potion of Tongues (cr, 750 gp)", "Potion of Touch of the Sea (apg, 50 gp)", "Potion of Undetectable Alignment (cr, 300 gp)", "Potion of Vanish (apg, 50 gp)", 
                     "Potion of Virtue (cr, 25 gp)", "Potion of Water Breathing (cr, 750 gp)", "Potion of Water Walk (cr, 750 gp)"]
-    possibility = artObj * random.randrange(1, 101, 1)
+    possibility = pots * random.randrange(1, 101, 1)
+    potionContain = []
     if possibility > 34 :
+        counter = 0
+        if cr < 5 :
+            counter = int(cr*.5)
+        elif cr < 10 :
+            counter = int(cr*1.25)
+        elif cr < 15 :
+            counter = int(cr*2)
+        else :
+            counter = int(cr*2.75)
+        if possibility > 34 :
+            while counter > 0 :
+                potionContain.append(random.randrange(0, potionList.__len__(), 1))
+                counter -= 1
+            for i in range(0, potionList.__len__()) :
+                if potionList[i] in potionContain :
+                    count = potionContain.count(potionList[i])
+                    if count > 0 :
+                        details = "%s%s%s%s" % (details, count, " x ", potionList[i])
     details = "%s%s" % (details, "\n-Scrolls------------------------------------\n")
     return details    
 
