@@ -130,6 +130,7 @@ def SpecialMats(cr, specialMats) :
     if possibility > 34 :
         while specialMatsCount > 0 :
             details = "%s%s%s%s%s" % (details, int(cr*.75), " lbs of", specialMatsList[random.randrange(0, specialMatsList.__len__(), 1)], "\n")
+            specialMatsCount -= 1
     details = "%s%s" % (details, "\n-Normal-Equipment---------------------------\n")
     return details    
 
@@ -166,7 +167,7 @@ def NormEquip(cr, normEquip) :
         counter = int(cr*10)
     if possibility > 34 :
         while counter > 0 :
-            normContain.append(random.randrange(0, normEquipList.__len__(), 1))
+            normContain.append(normEquipList[random.randrange(0, normEquipList.__len__(), 1)])
             counter -= 1
         for i in range(0, normEquipList.__len__()) :
             if normEquipList[i] in normContain :
@@ -358,7 +359,7 @@ def MagicEquip(cr, magicEquip) :
         else :
             counter = int(cr*1.333)
         while counter > 0 :
-            magicContain.append(random.randrange(0, magicEquipList.__len__(), 1))
+            magicContain.append(magicEquipList[random.randrange(0, magicEquipList.__len__(), 1)])
             counter -= 1
         for i in range(0, magicEquipList.__len__()) :
             if magicEquipList[i] in magicContain :
@@ -408,7 +409,7 @@ def Pots(cr, pots) :
         else :
             counter = int(cr*2.75)
         while counter > 0 :
-            potionContain.append(random.randrange(0, potionList.__len__(), 1))
+            potionContain.append(potionList[random.randrange(0, potionList.__len__(), 1)])
             counter -= 1
         for i in range(0, potionList.__len__()) :
             if potionList[i] in potionContain :
@@ -527,7 +528,7 @@ def Scroll(cr, scroll) :
         else :
             counter = int(cr*.666)
         while counter > 0 :
-            scrollContain.append(random.randrange(0, scrollList.__len__(), 1))
+            scrollContain.append(scrollList[random.randrange(0, scrollList.__len__(), 1)])
             counter -= 1
         for i in range(0, scrollList.__len__()) :
             if scrollList[i] in scrollContain :
@@ -717,7 +718,7 @@ def Wand(cr, wand) :
         else :
             counter = int(cr*.555)
         while counter > 0 :
-            wandContain.append(random.randrange(0, wandList.__len__(), 1))
+            wandContain.append(wandList[random.randrange(0, wandList.__len__(), 1)])
             counter -= (cr*15)
         for i in range(0, wandList.__len__()) :
             if wandList[i] in wandContain :
@@ -757,7 +758,7 @@ def Staff(cr, staff) :
         else :
             counter = int(cr*.4)
         while counter > 0 :
-            staffContain.append(random.randrange(0, staffList.__len__(), 1))
+            staffContain.append(staffList[random.randrange(0, staffList.__len__(), 1)])
             counter -= (cr*.15)
         for i in range(0, staffList.__len__()) :
             if staffList[i] in staffContain :
@@ -787,7 +788,7 @@ def Rod(cr, rod) :
         else :
             counter = int(cr*.25)
         while counter > 0 :
-            rodContain.append(random.randrange(0, rodList.__len__(), 1))
+            rodContain.append(rodList[random.randrange(0, rodList.__len__(), 1)])
             counter -= (cr*.08)
         for i in range(0, rodList.__len__()) :
             if rodList[i] in rodContain :
@@ -836,7 +837,7 @@ def Ring(cr, ring) :
         else :
             counter = int(cr*.4)
         while counter > 0 :
-            ringContain.append(random.randrange(0, ringList.__len__(), 1))
+            ringContain.append(ringList[random.randrange(0, ringList.__len__(), 1)])
             counter -= (cr*.125)
         for i in range(0, ringList.__len__()) :
             if ringList[i] in ringContain :
@@ -924,7 +925,7 @@ def Wonderous(cr, wonderous) :
         else :
             counter = int(cr*.888)
         while counter > 0 :
-            wonderousContain.append(random.randrange(0, wonderousList.__len__(), 1))
+            wonderousContain.append(wonderousList[random.randrange(0, wonderousList.__len__(), 1)])
             counter -= (cr*15)
         for i in range(0, wonderousList.__len__()) :
             if wonderousList[i] in wonderousContain :
@@ -1200,30 +1201,30 @@ def Intelligent(cr, intelligent) :
     possibility = intelligent * random.randrange(1, 101, 1)
     if possibility > 96 :
         details = "%s%s%s%s%s%s%s%s%s%s%s%s" % (details, intemIntellList[random.randrange(0, intemIntellList.__len__(), 1)], alignmentList[random.randrange(0, alignmentList.__len__(), 1)], "\n", 
-                        sensesList[random.randrange(0, sensesList.__len__(), 1)], powersList[random.randrange(0, powersList.__len__(), 1)], "\n", purposeList[random.randrange(0, purposeList.__len__(), 1)], 
-                        dedPowersList[random.randrange(0, dedPowersList.__len__(), 1)], "\n", baseEgoModList[random.randrange(0, baseEgoModList.__len__(), 1)], 
-                        intMagicEquipList[random.randrange(0, intMagicEquipList.__len__(), 1)])
+                                                sensesList[random.randrange(0, sensesList.__len__(), 1)], powersList[random.randrange(0, powersList.__len__(), 1)], "\n", purposeList[random.randrange(0, purposeList.__len__(), 1)], 
+                                                dedPowersList[random.randrange(0, dedPowersList.__len__(), 1)], "\n", baseEgoModList[random.randrange(0, baseEgoModList.__len__(), 1)], 
+                                                intMagicEquipList[random.randrange(0, intMagicEquipList.__len__(), 1)])
     return details   
 
-def EncouterTreasure(cr, currency = 100, artObj = 100, specialMats = 100, normEquip = 100,
-                     magicEquip = 100, pots = 100, scroll = 100, wand = 100, staff = 100, rod = 100, ring = 100,
-                     wonderous = 100, artifact = 100, cursed = 100, intelligent = 100) :
+def EncouterTreasure(cr, currency = 1000, artObj = 1000, specialMats = 1000, normEquip = 1000,
+                     magicEquip = 1000, pots = 1000, scroll = 1000, wand = 1000, staff = 1000, rod = 1000, ring = 1000,
+                     wonderous = 1000, artifact = 100, cursed = 100, intelligent = 100) :
     details = ""
-    details = Currency(cr, currency)  
-    details = ArtObj(cr, artObj)  
-    details = SpecialMats(cr, specialMats)  
-    details = NormEquip(cr, normEquip)  
-    details = MagicEquip(cr, magicEquip)   
-    details = Pots(cr, pots)  
-    details = Scroll(cr, scroll)  
-    details = Wand(cr, wand)  
-    details = Staff(cr, staff)  
-    details = Rod(cr, rod) 
-    details = Ring(cr, ring) 
-    details = Wonderous(cr, wonderous)   
-    details = Artifact(cr, artifact)   
-    details = Cursed(cr, cursed)   
-    details = Intelligent(cr, intelligent)
+    details = "%s%s" % (details, Currency(cr, currency)) 
+    details = "%s%s" % (details, ArtObj(cr, artObj))  
+    details = "%s%s" % (details, SpecialMats(cr, specialMats))  
+    details = "%s%s" % (details, NormEquip(cr, normEquip))  
+    details = "%s%s" % (details, MagicEquip(cr, magicEquip))   
+    details = "%s%s" % (details, Pots(cr, pots))  
+    details = "%s%s" % (details, Scroll(cr, scroll))  
+    details = "%s%s" % (details, Wand(cr, wand))  
+    details = "%s%s" % (details, Staff(cr, staff))  
+    details = "%s%s" % (details, Rod(cr, rod)) 
+    details = "%s%s" % (details, Ring(cr, ring)) 
+    details = "%s%s" % (details, Wonderous(cr, wonderous))   
+    details = "%s%s" % (details, Artifact(cr, artifact))   
+    details = "%s%s" % (details, Cursed(cr, cursed))   
+    details = "%s%s" % (details, Intelligent(cr, intelligent))
 
     return details
 
@@ -1231,21 +1232,21 @@ def HoardTreasure(cr, currency = 100, artObj = 100, specialMats = 100, normEquip
                   magicEquip = 100, pots = 100, scroll = 100, wand = 100, staff = 100, rod = 100, ring = 100,
                   wonderous = 100, artifact = 100, cursed = 100, intelligent = 100) :
     details = ""
-    details = Currency(cr, currency)  
-    details = ArtObj(cr, artObj)  
-    details = SpecialMats(cr, specialMats)  
-    details = NormEquip(cr, normEquip)  
-    details = MagicEquip(cr, magicEquip)   
-    details = Pots(cr, pots)  
-    details = Scroll(cr, scroll)  
-    details = Wand(cr, wand)  
-    details = Staff(cr, staff)  
-    details = Rod(cr, rod) 
-    details = Ring(cr, ring) 
-    details = Wonderous(cr, wonderous)   
-    details = Artifact(cr, artifact)   
-    details = Cursed(cr, cursed)   
-    details = Intelligent(cr, intelligent)
+    details = "%s%s" % (details, Currency(cr, currency))  
+    details = "%s%s" % (details, ArtObj(cr, artObj))  
+    details = "%s%s" % (details, SpecialMats(cr, specialMats))  
+    details = "%s%s" % (details, NormEquip(cr, normEquip))  
+    details = "%s%s" % (details, MagicEquip(cr, magicEquip))   
+    details = "%s%s" % (details, Pots(cr, pots))  
+    details = "%s%s" % (details, Scroll(cr, scroll))  
+    details = "%s%s" % (details, Wand(cr, wand))  
+    details = "%s%s" % (details, Staff(cr, staff))  
+    details = "%s%s" % (details, Rod(cr, rod))
+    details = "%s%s" % (details, Ring(cr, ring)) 
+    details = "%s%s" % (details, Wonderous(cr, wonderous))   
+    details = "%s%s" % (details, Artifact(cr, artifact))   
+    details = "%s%s" % (details, Cursed(cr, cursed))   
+    details = "%s%s" % (details, Intelligent(cr, intelligent))
     return details
 
 print("hoard or encounter?\n")
