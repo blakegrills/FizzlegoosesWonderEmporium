@@ -749,7 +749,7 @@ def Humanoid(cr, name = None, classNames = None) :
     else :
         details = "%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s" % (details, wardrobeListFem[(random.randrange(0, wardrobeListFem.__len__(), 1))], "\n", eyeListFem[(random.randrange(0, eyeListFem.__len__(), 1))], "\n", hairListFem[(random.randrange(0, hairListFem.__len__(), 1))], "\n", skinListFem[(random.randrange(0, skinListFem.__len__(), 1))], "\n", buildListFem[(random.randrange(0, buildListFem.__len__(), 1))], "\n", noseListFem[(random.randrange(0, noseListFem.__len__(), 1))], "\n", otherListFem[(random.randrange(0, otherListFem.__len__(), 1))], "\n--------------------------------------------\n")
 
-    details = "%s%s" % (details, TreasureGenerator.EncouterTreasure(cr, currency = 1000, artObj = 1000, specialMats = 1000, normEquip = 1000, magicEquip = 1000, pots = 1000, scroll = 1000, wand = 1000, staff = 1000, rod = 1000, ring = 1000, wonderous = 1000, artifact = 100, cursed = 100, intelligent = 100))
+    details = "%s%s" % (details, TreasureGenerator.EncouterTreasure(cr, currency = cr, artObj = cr, specialMats = cr, normEquip = cr, magicEquip = cr, pots = cr, scroll = cr, wand = cr, staff = cr, rod = cr, ring = cr, wonderous = cr, artifact = cr, cursed = cr, intelligent = cr))
 
     fileName = "%s%s%s%s%s%s" % ("~", name, sex, subType, npcClass, ".txt")
     oFile = open(fileName, "w")
@@ -757,8 +757,9 @@ def Humanoid(cr, name = None, classNames = None) :
     oFile.close()
 
 print("Number of NPCs\n")
-countOf = 0
-countOf = int(input())
+countOf = ""
+countOf = input()
+countOf = int(countOf)
 print("Generate Unique(Yes/No)")
 unique = "No"
 unique = input().lower()

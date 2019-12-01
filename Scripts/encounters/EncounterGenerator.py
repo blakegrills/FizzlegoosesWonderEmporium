@@ -129,9 +129,9 @@ def Abberation(enviroment, cr, temp, name = None) :
     if 10 in specialAttack :
         details = "%s%s" % (details, "Fast Healing 5\n")
 
-    details = "%s%s" % (details, TreasureGenerator.EncouterTreasure(cr, currency = 1000, artObj = 1000, specialMats = 1000, normEquip = 1000,
-                                                    magicEquip = 1000, pots = 1000, scroll = 1000, wand = 1000, staff = 1000, rod = 1000, ring = 1000,
-                                                    wonderous = 1000, artifact = 100, cursed = 100, intelligent = 100))
+    details = "%s%s" % (details, TreasureGenerator.EncouterTreasure(cr, currency = cr, artObj = (cr - 10), specialMats = (cr - 10), normEquip = (cr - 10),
+                                                    magicEquip = (cr - 10), pots = (cr - 10), scroll = (cr - 10), wand = (cr - 10), staff = (cr - 10), rod = (cr - 10), ring = (cr - 10),
+                                                    wonderous = (cr - 10), artifact = (cr - 10), cursed = cr, intelligent = (cr - 10)))
 
     details = "%s%s" % (details, "\n--------------------------------------------\n")
 
@@ -272,9 +272,9 @@ def Dragon(enviroment, cr, temp, name = None) :
     if 10 in specialAttack :
         details = "%s%s" % (details, "Fast Healing 5\n")
 
-    details = "%s%s" % (details, TreasureGenerator.EncouterTreasure(cr, currency = 1000, artObj = 1000, specialMats = 1000, normEquip = 1000,
-                                                    magicEquip = 1000, pots = 1000, scroll = 1000, wand = 1000, staff = 1000, rod = 1000, ring = 1000,
-                                                    wonderous = 1000, artifact = 100, cursed = 100, intelligent = 100))
+    details = "%s%s" % (details, TreasureGenerator.EncouterTreasure(cr, currency = cr, artObj = (cr + 10), specialMats = (cr + 10), normEquip = (cr + 10),
+                                                    magicEquip = (cr + 10), pots = (cr + 10), scroll = (cr + 10), wand = (cr + 10), staff = (cr + 10), rod = (cr + 10), ring = (cr + 10),
+                                                    wonderous = (cr + 10), artifact = cr, cursed = cr, intelligent = cr))
 
     details = "%s%s" % (details, "\n--------------------------------------------\n")
 
@@ -401,9 +401,9 @@ def Undead(enviroment, cr, temp, name = None) :
     if 10 in specialAttack :
         details = "%s%s" % (details, "Fast Healing 3\n")
 
-    details = "%s%s" % (details, TreasureGenerator.EncouterTreasure(cr, currency = 1000, artObj = 1000, specialMats = 1000, normEquip = 1000,
-                                                    magicEquip = 1000, pots = 1000, scroll = 1000, wand = 1000, staff = 1000, rod = 1000, ring = 1000,
-                                                    wonderous = 1000, artifact = 100, cursed = 100, intelligent = 100))
+    details = "%s%s" % (details, TreasureGenerator.EncouterTreasure(cr, currency = cr, artObj = (cr - 50), specialMats = (cr - 50), normEquip = (cr - 10),
+                                                    magicEquip = (cr - 10), pots = (cr - 50), scroll = (cr - 50), wand = (cr - 50), staff = (cr - 50), rod = (cr - 50), ring = (cr - 10),
+                                                    wonderous = (cr - 50), artifact = (cr - 100), cursed = cr, intelligent = (cr - 100)))
 
     details = "%s%s" % (details, "\n--------------------------------------------\n")
 
@@ -522,9 +522,9 @@ def Fey(enviroment, cr, temp, name = None) :
     if 8 in specialAttack :
         details = "%s%s" % (details, "Create a 60ft radius area of mist for 1d4 minutes.\n")
 
-    details = "%s%s" % (details, TreasureGenerator.EncouterTreasure(cr, currency = 1000, artObj = 1000, specialMats = 1000, normEquip = 1000,
-                                                    magicEquip = 1000, pots = 1000, scroll = 1000, wand = 1000, staff = 1000, rod = 1000, ring = 1000,
-                                                    wonderous = 1000, artifact = 100, cursed = 100, intelligent = 100))
+    details = "%s%s" % (details, TreasureGenerator.EncouterTreasure(cr, currency = cr, artObj = cr, specialMats = cr, normEquip = cr,
+                                                    magicEquip = cr, pots = cr, scroll = cr, wand = cr, staff = cr, rod = cr, ring = cr,
+                                                    wonderous = cr, artifact = cr, cursed = cr, intelligent = cr))
 
     details = "%s%s" % (details, "\n--------------------------------------------\n")
 
@@ -648,9 +648,9 @@ def Animal(enviroment, cr, temp, name = None) :
     if 10 in specialAttack :
         details = "%s%s%s%s" % (details, "Web (Ex) Creatures with the web ability can use webs to support themselves \nand up to one additional creature of the same size. In addition, such creatures can throw a web up to \neight times per day. This is similar to an attack with a net but has a maximum range of 50 feet, \nwith a range increment of 10 feet, and is effective against targets up to one size category larger than the \nweb spinner. An entangled creature can escape with a successful Escape Artist check or burst \nthe web with a Strength check. Both are standard actions with a DC equal to ", (10 + int(cr*2) + (int((constitution-10)/2))), "\n")
 
-    details = "%s%s" % (details, TreasureGenerator.EncouterTreasure(cr, currency = 1000, artObj = 1000, specialMats = 1000, normEquip = 1000,
-                                                    magicEquip = 1000, pots = 1000, scroll = 1000, wand = 1000, staff = 1000, rod = 1000, ring = 1000,
-                                                    wonderous = 1000, artifact = 100, cursed = 100, intelligent = 100))
+    details = "%s%s" % (details, TreasureGenerator.EncouterTreasure(cr, currency = (cr - 50), artObj = (cr - 50), specialMats = (cr - 50), normEquip = (cr - 50),
+                                                    magicEquip = (cr - 50), pots = (cr - 50), scroll = (cr - 50), wand = (cr - 50), staff = (cr - 50), rod = (cr - 50), ring = (cr - 50),
+                                                    wonderous = (cr - 50), artifact = (cr - 100), cursed = (cr + 100), intelligent = (cr - 100)))
 
     details = "%s%s" % (details, "\n--------------------------------------------\n")
 
@@ -779,10 +779,9 @@ def MagicalBeast(enviroment, cr, temp, name = None) :
     if 10 in specialAttack :
         details = "%s%s" % (details, "Invisibility\n")
 
-    details = "%s%s" % (details, TreasureGenerator.EncouterTreasure(cr, currency = 1000, artObj = 1000, specialMats = 1000, normEquip = 1000,
-                                                    magicEquip = 1000, pots = 1000, scroll = 1000, wand = 1000, staff = 1000, rod = 1000, ring = 1000,
-                                                    wonderous = 1000, artifact = 100, cursed = 100, intelligent = 100))
-
+    details = "%s%s" % (details, TreasureGenerator.EncouterTreasure(cr, currency = (cr - 50), artObj = (cr - 50), specialMats = (cr - 50), normEquip = (cr - 50),
+                                                    magicEquip = (cr - 50), pots = (cr - 50), scroll = (cr - 50), wand = (cr - 50), staff = (cr - 50), rod = (cr - 50), ring = (cr - 50),
+                                                    wonderous = (cr - 50), artifact = (cr - 100), cursed = (cr + 100), intelligent = (cr - 100)))
     details = "%s%s" % (details, "\n--------------------------------------------\n")
 
     return details
@@ -913,9 +912,9 @@ def Giant(enviroment, cr, temp, name = None) :
     if 10 in specialAttack :
         details = "%s%s" % (details, "Fast Healing 5")
 
-    details = "%s%s" % (details, TreasureGenerator.EncouterTreasure(cr, currency = 1000, artObj = 1000, specialMats = 1000, normEquip = 1000,
-                                                    magicEquip = 1000, pots = 1000, scroll = 1000, wand = 1000, staff = 1000, rod = 1000, ring = 1000,
-                                                    wonderous = 1000, artifact = 100, cursed = 100, intelligent = 100))
+    details = "%s%s" % (details, TreasureGenerator.EncouterTreasure(cr, currency = cr, artObj = (cr + 10), specialMats = (cr + 10), normEquip = (cr + 10),
+                                                    magicEquip = (cr + 10), pots = (cr + 10), scroll = (cr + 10), wand = (cr + 10), staff = (cr + 10), rod = (cr + 10), ring = (cr + 10),
+                                                    wonderous = (cr + 10), artifact = cr, cursed = cr, intelligent = cr))
 
     details = "%s%s" % (details, "\n--------------------------------------------\n")
 
@@ -1062,9 +1061,9 @@ def Humanoid(enviroment, cr, temp, name = None) :
     if 5 in specialAttack :
         details = "%s%s" % (details, "Sound Mimicry (Ex) The creature perfectly imitates certain sounds or even specific \nvoices. The creature makes a Bluff check opposed by the listener’s Sense Motive check to recognize the mimicry, \nalthough if the listener isn’t familiar with the person or type of creatures mimicked, it takes a –8 penalty on its \nSense Motive check. The creature has a +8 racial bonus on its Bluff check to mimic sounds \n(including accents and speech patterns, if a voice mimic) it has listened to for at least 10 minutes\n")
 
-    details = "%s%s" % (details, TreasureGenerator.EncouterTreasure(cr, currency = 1000, artObj = 1000, specialMats = 1000, normEquip = 1000,
-                                                    magicEquip = 1000, pots = 1000, scroll = 1000, wand = 1000, staff = 1000, rod = 1000, ring = 1000,
-                                                    wonderous = 1000, artifact = 100, cursed = 100, intelligent = 100))
+    details = "%s%s" % (details, TreasureGenerator.EncouterTreasure(cr, currency = cr, artObj = cr, specialMats = cr, normEquip = cr,
+                                                    magicEquip = cr, pots = cr, scroll = cr, wand = cr, staff = cr, rod = cr, ring = cr,
+                                                    wonderous = cr, artifact = cr, cursed = cr, intelligent = cr))
 
     details = "%s%s" % (details, "\n--------------------------------------------\n")
 

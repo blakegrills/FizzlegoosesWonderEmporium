@@ -23,11 +23,11 @@ def Military(strength) :
     details = ""
     if strength == "conscripts" :
         details = "%s%s%s%s%s" % (details, "Military Strength(conscripts): ", random.randrange(0, 2, 1), "%", " of population\n")
-    if strength == "low" :
+    elif strength == "low" :
         details = "%s%s%s%s%s" % (details, "Military Strength: ", random.randrange(4, 8, 1), "%", " of population\n")
-    if strength == "medium" :
+    elif strength == "medium" :
         details = "%s%s%s%s%s" % (details, "Military Strength: ", random.randrange(9, 16, 1), "%", " of population\n")
-    if strength == "high" :
+    elif strength == "high" :
         details = "%s%s%s%s%s" % (details, "Military Strength: ", random.randrange(16, 22, 1), "%", " of population\n")
     else :
         details = "%s%s%s%s%s" % (details, "Military Strength: ", random.randrange(22, 50, 1), "%", " of population\n")
@@ -345,7 +345,7 @@ for i in range(0, cityNames.__len__()) :
     details = Guilds(cityType)
     detail = "%s%s%s" % (detail, details, "\n-----------------------------------------------------------------------------------------------------\n")
 
-    fileName = "%s%s%s%s%s%s" % ("~", cityName, cityType, alignment, strength, ".txt")
+    fileName = "%s%s%s%s%s%s" % ("~~", cityName, cityType, alignment, strength, ".txt")
     oFile = open(fileName, "w")
     oFile.write(detail)
     oFile.close()

@@ -60,9 +60,9 @@ while numQuests > 0 :
     questCR = random.randrange(1, cr + 5, 1)
     details = "%s%s%s%s%s" % (details, "\nQuest----------------------------------------------------\n", "CR: ", questCR, "\n")
     details = "%s%s%s" % (details, sideQuests[random.randrange(0, sideQuests.__len__(), 1)], "\nReward----------------------------------------------------\n")
-    reward = TreasureGenerator.EncouterTreasure(cr, currency = 1000, artObj = 1000, specialMats = 1000, normEquip = 1000,
-                                                    magicEquip = 1000, pots = 1000, scroll = 1000, wand = 1000, staff = 1000, rod = 1000, ring = 1000,
-                                                    wonderous = 1000, artifact = 100, cursed = 100, intelligent = 100)
+    reward = TreasureGenerator.EncouterTreasure(cr, currency = cr, artObj = cr, specialMats = cr, normEquip = cr,
+                                                    magicEquip = cr, pots = cr, scroll = cr, wand = cr, staff = cr, rod = cr, ring = cr,
+                                                    wonderous = cr, artifact = cr, cursed = cr, intelligent = cr)
     details = "%s%s" % (details, reward)
 
 oFile = open(fileName, "w")

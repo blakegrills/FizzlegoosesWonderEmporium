@@ -17,7 +17,7 @@ def Humanoid(cr, name = None, classNames = None, subType = None) :
     gnomeMale=["Largo","Merimas","Wilibald","Gardner","Hogg","Reginard","Bolger","Déagol","Hildigard","Marcho","Brandagamba","Headstrong","Galpsi","Carl","Hayward","Noakes","Flambard","Hlothran","Falco","Meriadoc","Proudfoot","Isembold","Stoor","Goldworthy","Diggle","RiverFolk","Hildifons","Goodchild","Bandobras","Hob","Fastred","Goodbody","Underhill","Marmadas","Tolman","Bucca","Togo","Sackville","Madoc","Blanco","Frodo","Brandybuck","Oldbuck","Hending","Fosco","Puddifoot","Goodenough","Gamgee","Ilberic","Merimac","Labingi","Isembard","Took","Harfoot","Hamson","Halfred","Goold","Bophîn","Ponto","Brown","Galbasi","Tûk","Gamwich","Ferdinand","Gorbulas","Maggot","Rufus","Andwise","Moro","Daddy","Isumbras","Dudo","Merry","Dinodas","Tobold","Odovacar","Robin","Sandyman","Adelard","Cottar","Seredic","Gawkroger","Jolly","Longo","Pippin","Elfstan","Banks","Cotman","Townsend","Faramir","Everard","Halfast","Smallburrow","Mugwort","Rumble","Sméagol","Hobson","Whitfoot","Bob","Odo","Hildibrand","Tunnelly","Butcher","Lotho","Brockhouse","Sancho","Lightfoot","Fredegar","Minto","North-Tooks","Farmer","Fallohide","Ted","Otho","Bowman","Holfast","Rudigar","Ferdibrand","Bilbo","Filibert"]
     gnomeFemale=["Galpsi","Amaranth","Angelica","Lightfoot","Boffin","Bracegirdle","Gardner","Chubb-Baggins","Roper","Hlothran","North-Tooks","Bolger","Goldilocks","Drogo","Burrowes","Esmeralda","Fíriel","Pott","Dora","Rosamunda","Laura","Townsend","Mugwort","Brockhouse","Celandine","Tanta","Lobelia","Twofoot","Daisy","Menegilda","Tûk","Saradoc","Noakes","Primula","Pimpernel","Brownlock","Malva","Longholes","Burrows","Greenhand","Hugo","Hilda","Lily","Goold","Gammidge","Linda","Lalia","Mentha","Fallohide","Hogg","Gamwich","Fairbairn","Prisca","Hayward","Goodbody","Goldworthy","Labingi","Brandybuck","Hanna","Donnamira","Pansy","Mimosa","Took","Gorhendad","Sandheaver","Melilot","Goodenough","Zaragamba","Whitfoot","Mirabella","Brandagamba","Bophîn","May","Rose","Baggins","Bell","Estella","Stoor","Bungo","Brown","Smallburrow","Butcher","Clayhanger","Eglantine","RiverFolk","Sandyman","Harfoot","Proudfoot","Salvia","Bunce","Grubb","Camellia","Asphodel","Cotton","Primrose","Maggot","Banks","Belladonna","Hornblower","Rumble","Rowan","Gilly","Puddifoot","Belba","Oldbuck","Pearl","Gawkroger","Berylla"]
     orcish=["Snagagûl","Gûlghâsh","Snagabúrz","Dugbúrz","Asholog","Urukbúrz","Globuk","Bagronk","Ologbúrz","Gûlbúbhosh","Búbhoshum","Ghâshbúrz","Gûlburzum","Pushdug","Snagaburzum","Snagasharkû","Sharkû","Snagaghâsh","Burzum","Ashuruk","Tamruzîr","Pharazbalak","Shakalbalak","Azrubêl","Shakalgimil","Ûrîthôr","Bawbuthôr","Balkazîr","Zâinabên","Aphanuzîr","Dôlguzagar","Avradizimir","Rôthzagar","Rôthzôr","Bêlzagar","Zimrupân","Pharazôn","Zimrathôn","Gimlibên","Gimilbalak","Abattârik","Nimrubên","Balkumagân","Azrubên","Dôlgubalak","Balakân","Sapthan","Shakalzôr","Shakalzagar","Avalôzîr","Gimilzôr","Nimruzîr","Arnubalkân","Gimlân","Karbazîr","Arnubên","Rôthbalak","Nilûbên","Gimilzagar","Abrazîr","Azrugimil","Rôthpharaz","Tarîkmagân","Azruzôr","Arnuzîr","Azulzîr","Îrpân","Azruzagar","Shakalpharaz","Avalôbên","Azrubalak","Azrupharaz","Aglarân","Zôrzagar","Adûnabêl","Rôthgimil","Sakalthôr","Tamrubên"]
-    if num == 1 or subType == "human" :
+    if subType == "human" :
         subType = "human"
         if name == None :
             if sex == 0 :
@@ -26,7 +26,7 @@ def Humanoid(cr, name = None, classNames = None, subType = None) :
             else :
                 name = humanFemale[random.randrange(0, humanFemale.__len__(), 1)]
                 sex = "Female"
-    if num == 2 or subType == "dwarf" :
+    elif subType == "dwarf" :
         subType = "dwarf"
         if name == None :
             if sex == 0 :
@@ -35,7 +35,7 @@ def Humanoid(cr, name = None, classNames = None, subType = None) :
             else :
                 name = dwarfFemale[random.randrange(0, dwarfFemale.__len__(), 1)]
                 sex = "Female"
-    if num == 3 or subType == "gnome" :
+    elif subType == "gnome" :
         subType = "gnome"
         size = "small"
         if name == None :
@@ -45,7 +45,7 @@ def Humanoid(cr, name = None, classNames = None, subType = None) :
             else :
                 name = gnomeFemale[random.randrange(0, gnomeFemale.__len__(), 1)]
                 sex = "Female"
-    if num == 4 or subType == "elf" :
+    elif subType == "elf" :
         subType = "elf"
         if name == None :
             if sex == 0 :
@@ -54,7 +54,7 @@ def Humanoid(cr, name = None, classNames = None, subType = None) :
             else :
                 name = elfFemale[random.randrange(0, elfFemale.__len__(), 1)]
                 sex = "Female"
-    if num == 5 or subType == "orc" :
+    elif subType == "orc" :
         subType = "orc"
         if name == None :
             if sex == 0 :
@@ -63,7 +63,7 @@ def Humanoid(cr, name = None, classNames = None, subType = None) :
             else :
                 name = orcish[random.randrange(0, orcish.__len__(), 1)]
                 sex = "Female"
-    if num == 6 or subType == "half-orc" :
+    elif subType == "half-orc" :
         subType = "half-orc"
         ranNum = random.randrange(0, 2, 1)
         if name == None :
@@ -79,7 +79,7 @@ def Humanoid(cr, name = None, classNames = None, subType = None) :
                 else :
                     name = orcish[random.randrange(0, orcish.__len__(), 1)]
                 sex = "Female"
-    if num == 7 or subType == "half-elf" :
+    elif subType == "half-elf" :
         subType = "half-elf"
         ranNum = random.randrange(0, 2, 1)
         if name == None :
@@ -95,7 +95,7 @@ def Humanoid(cr, name = None, classNames = None, subType = None) :
                 else :
                     name = elfFemale[random.randrange(0, elfFemale.__len__(), 1)]
                 sex = "Female"
-    if num == 8 or subType == "goblin" :
+    elif subType == "goblin" :
         subType = "goblin"
         size = "small"
         if name == None :
@@ -105,7 +105,7 @@ def Humanoid(cr, name = None, classNames = None, subType = None) :
             else :
                 name = orcish[random.randrange(0, orcish.__len__(), 1)]
                 sex = "Female"
-    if num == 9 or subType == "lizardfolk" :
+    elif subType == "lizardfolk" :
         subType = "lizardfolk"
         if name == None :
             if sex == 0 :
@@ -114,7 +114,7 @@ def Humanoid(cr, name = None, classNames = None, subType = None) :
             else :
                 name = orcish[random.randrange(0, orcish.__len__(), 1)]
                 sex = "Female"
-    if num == 10 or subType == "changling" :
+    else :
         subType = "changling"
         if name == None :
             if sex == 0 :
@@ -129,7 +129,9 @@ def Humanoid(cr, name = None, classNames = None, subType = None) :
     
     if classNames == None :
         classNames = ["Guard", "Professional", "Assassin", "Rogue", "Priest", "Fighter", "Noble", "Slave", "Mage", "Military", "Merchant"]
-    npcClass = classNames[random.randrange(0, classNames.__len__(), 1)]
+        npcClass = classNames[random.randrange(0, classNames.__len__(), 1)]
+    else :
+        npcClass = classNames
     if npcClass == "Guard" :
         #Stat Block
         strength = 12 + int(cr*.15)
@@ -749,11 +751,11 @@ def Humanoid(cr, name = None, classNames = None, subType = None) :
     else :
         details = "%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s" % (details, wardrobeListFem[(random.randrange(0, wardrobeListFem.__len__(), 1))], "\n", eyeListFem[(random.randrange(0, eyeListFem.__len__(), 1))], "\n", hairListFem[(random.randrange(0, hairListFem.__len__(), 1))], "\n", skinListFem[(random.randrange(0, skinListFem.__len__(), 1))], "\n", buildListFem[(random.randrange(0, buildListFem.__len__(), 1))], "\n", noseListFem[(random.randrange(0, noseListFem.__len__(), 1))], "\n", otherListFem[(random.randrange(0, otherListFem.__len__(), 1))], "\n--------------------------------------------\n")
 
-    details = "%s%s" % (details, TreasureGenerator.EncouterTreasure(cr, currency = 1000, artObj = 1000, specialMats = 1000, normEquip = 1000, magicEquip = 1000, pots = 1000, scroll = 1000, wand = 1000, staff = 1000, rod = 1000, ring = 1000, wonderous = 1000, artifact = 100, cursed = 100, intelligent = 100))
+    details = "%s%s" % (details, TreasureGenerator.EncouterTreasure(cr, currency = cr, artObj = cr, specialMats = cr, normEquip = cr, magicEquip = cr, pots = cr, scroll = cr, wand = cr, staff = cr, rod = cr, ring = cr, wonderous = cr, artifact = cr, cursed = cr, intelligent = cr))
 
-    fileName = "%s%s%s%s" % (name, sex, npcClass, ".txt")
+    fileName = "%s%s%s%s%s%s" % ("~", name, sex, subType, npcClass, ".txt")
     oFile = open(fileName, "w")
     oFile.write(details)
     oFile.close()
-
     return fileName
+

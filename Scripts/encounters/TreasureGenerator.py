@@ -2,8 +2,8 @@ import random
 
 def Currency(cr, currency) :
     details = ""
-    possibility = currency * random.randrange(1, 101, 1)
-    if possibility > 34 :
+    possibility = currency + random.randrange(1, 101, 1)
+    if possibility > 30 :
         if cr < 4 :
             copRan = int(random.randrange(1, 11, 1))
             silRan = int(random.randrange(1, 6, 1))
@@ -76,9 +76,9 @@ def ArtObj(cr, artObj) :
                     "Silver scepter with eagle symbols", "Silver statue of a dragon", "Small Diamond", "Small Ruby", "Smoky Quartz", "Star Sapphire", "Tigereye", "Topaz", 
                     "Tourmaline", "Turquoise", "Zircon"]
     maxVal = int((cr+1)/2)+1
-    numArtObj = random.randrange(1, maxVal, 1)
-    possibility = artObj * random.randrange(1, 101, 1)
-    if possibility > 34 :
+    numArtObj = random.randrange(1, maxVal+1, 1)
+    possibility = artObj + random.randrange(1, 101, 1)
+    if possibility > 40 :
         if cr < 4 :
             while numArtObj > 0 :
                 value = random.randrange(1, 50, 1)
@@ -126,8 +126,8 @@ def SpecialMats(cr, specialMats) :
         specialMatsCount = random.randrange(0, int(cr*2.5), 1)
     else :
         specialMatsCount = random.randrange(0, int(cr*3), 1)
-    possibility = specialMats * random.randrange(1, 101, 1)
-    if possibility > 34 :
+    possibility = specialMats + random.randrange(1, 101, 1)
+    if possibility > 60 :
         while specialMatsCount > 0 :
             details = "%s%s%s%s%s" % (details, int(cr*.75), " lbs of", specialMatsList[random.randrange(0, specialMatsList.__len__(), 1)], "\n")
             specialMatsCount -= 1
@@ -154,7 +154,7 @@ def NormEquip(cr, normEquip) :
                         "Small Glass Rod", "Small Hunting Trap", "Small Iron Box", "Small Magnet", "Small Wooden Chest", "Snowshoes", "Spade", "Spear", "Spinning Wheel", "Studded Leather Armor", "Table", "Tent", "Thieves' Tools", 
                         "Throne", "Tiny Lead Box", "Tiny Wooden Box", "Tongs", "Tower Shield", "Trebuchet", "Trident", "Vial of Exotic Ink", "Vial of Ink", "Wagon", "Wardrobe", "Warhammer", "Waterskin", "Weapon Rack", 
                         "Wedge of Cheese", "Wheel of Cheese", "Whetsone", "Whip", "Wood Axe", "Wooden Drum", "Wooden Holy Symbol", "Wool Cloak", "Workbench"]
-    possibility = normEquip * random.randrange(1, 101, 1)
+    possibility = normEquip + random.randrange(1, 101, 1)
     normContain = []
     counter = 0
     if cr < 5 :
@@ -165,7 +165,7 @@ def NormEquip(cr, normEquip) :
         counter = int(cr*6.5)
     else :
         counter = int(cr*10)
-    if possibility > 34 :
+    if possibility > 25 :
         while counter > 0 :
             normContain.append(normEquipList[random.randrange(0, normEquipList.__len__(), 1)])
             counter -= 1
@@ -346,9 +346,9 @@ def MagicEquip(cr, magicEquip) :
                         "Warhammer (+1 weapon) (sheds light) (2312 gp)", "Warhammer (+1 weapon, Frost) (sheds light) (8312 gp)", "Warhammer (+2 weapon) (8312 gp)", "Warhammer (+2 weapon) (sheds light) (8312 gp)", 
                         "Whip (+1 weapon) (2301 gp)", "Whip (+1 weapon) (inscription provides clue to function) (2301 gp)", "Whip (+1 weapon) (sheds light) (2301 gp)", "Whip (+2 weapon) (sheds light) (8301 gp)", 
                         "Winged Shield (17257 gp)", "Zombie Skin Shield (2159 gp)"]
-    possibility = magicEquip * random.randrange(1, 101, 1)
+    possibility = magicEquip + random.randrange(1, 101, 1)
     magicContain = []
-    if possibility > 34 :
+    if possibility > 70 :
         counter = 0
         if cr < 5 :
             counter = int(cr*.333)
@@ -396,9 +396,9 @@ def Pots(cr, pots) :
                     "Potion of Resistance (cr, 25 gp)", "Potion of Sanctuary (cr, 50 gp)", "Potion of Shield of Faith (cr, 50 gp)", "Potion of Spider Climb (cr, 300 gp)", "Potion of Stabilize (cr, 25 gp)", 
                     "Potion of Status (cr, 300 gp)", "Potion of Tongues (cr, 750 gp)", "Potion of Touch of the Sea (apg, 50 gp)", "Potion of Undetectable Alignment (cr, 300 gp)", "Potion of Vanish (apg, 50 gp)", 
                     "Potion of Virtue (cr, 25 gp)", "Potion of Water Breathing (cr, 750 gp)", "Potion of Water Walk (cr, 750 gp)"]
-    possibility = pots * random.randrange(1, 101, 1)
+    possibility = pots + random.randrange(1, 101, 1)
     potionContain = []
-    if possibility > 34 :
+    if possibility > 50 :
         counter = 0
         if cr < 5 :
             counter = int(cr*.5)
@@ -515,9 +515,9 @@ def Scroll(cr, scroll) :
                     "Scroll of Voice Alteration (um, 25 gp)", "Scroll of Vortex (apg, 2275 gp)", "Scroll of Wall of Ice (cr, 700 gp)", "Scroll of Wall of Iron (cr, 1700 gp)", "Scroll of Wall of Lava (apg, 3000 gp)", 
                     "Scroll of Wall of Stone (cr, 1125 gp)", "Scroll of Wandering Star Motes (apg, 700 gp)", "Scroll of Water Walk (cr, 375 gp)", "Scroll of Web (cr, 150 gp)", "Scroll of Whispering Wind (cr, 150 gp)", 
                     "Scroll of Wind Blades (arg, 1125 gp)", "Scroll of Wish (cr, 3825 gp)", "Scroll of Word of Chaos (cr, 2275 gp)", "Scroll of World Wave (apg, 3825 gp)"]
-    possibility = scroll * random.randrange(1, 101, 1)
+    possibility = scroll + random.randrange(1, 101, 1)
     scrollContain = []
-    if possibility > 34 :
+    if possibility > 55 :
         counter = 0
         if cr < 5 :
             counter = int(cr*.333)
@@ -705,9 +705,9 @@ def Wand(cr, wand) :
                 "Wand of Web (cr, 4500 gp)", "Wand of Web (cr, 4500 gp) (design provides clue to function)", "Wand of Web (cr, 4500 gp) (inscription provides clue to function)", "Wand of Whispering Wind (cr, 4500 gp)", 
                 "Wand of Whispering Wind (cr, 4500 gp) (inscription provides clue to function)", "Wand of Wind Wall (cr, 11250 gp)", "Wand of Wind Wall (cr, 11250 gp) (design provides clue to function)", 
                 "Wand of Wood Shape (cr, 4500 gp) (design provides clue to function)", "Wand of Zone of Truth (cr, 4500 gp)"]
-    possibility = wand * random.randrange(1, 101, 1)
+    possibility = wand + random.randrange(1, 101, 1)
     wandContain = []
-    if possibility > 34 :
+    if possibility > 70 :
         counter = 0
         if cr < 5 :
             counter = int(cr*.222)
@@ -745,9 +745,9 @@ def Staff(cr, staff) :
                     "Staff of Swarming Insects (22800 gp) (inscription provides clue to function)", "Staff of the Scout (9600 gp)", "Staff of the Scout (9600 gp) (inscription provides clue to function)", 
                     "Staff of Tricks (8800 gp)", "Staff of Tricks (8800 gp) (design provides clue to function)", "Staff of Tricks (8800 gp) (inscription provides clue to function)", "Staff of Understanding (16000 gp)", 
                     "Staff of Understanding (16000 gp) (design provides clue to function)", "Staff of Understanding (16000 gp) (inscription provides clue to function)"]
-    possibility = staff * random.randrange(1, 101, 1)
+    possibility = staff + random.randrange(1, 101, 1)
     staffContain = []
-    if possibility > 34 :
+    if possibility > 85 :
         counter = 0
         if cr < 5 :
             counter = int(cr*0)
@@ -775,9 +775,9 @@ def Rod(cr, rod) :
                 "Rod of Ruin (16000 gp)", "Rod of the Python (13000 gp)", "Rod of the Viper (19000 gp)", "Rod of the Viper (19000 gp) (design provides clue to function)", 
                 "Rod of the Viper (19000 gp) (inscription provides clue to function)", "Rod of the Wayang (12000 gp)", "Rod of the Wayang (12000 gp) (inscription provides clue to function)", 
                 "Rod of Wonder (12000 gp)", "Sapling Rod (16650 gp)"]
-    possibility = rod * random.randrange(1, 101, 1)
+    possibility = rod + random.randrange(1, 101, 1)
     rodContain = []
-    if possibility > 34 :
+    if possibility > 90 :
         counter = 0
         if cr < 5 :
             counter = int(cr*0)
@@ -824,9 +824,9 @@ def Ring(cr, ring) :
                 "Minor Ring of Spell Storing (18000 gp) (design provides clue to function)", "Minor Ring of Spell Storing (18000 gp) (inscription provides clue to function)", "Prisoner's Dungeon Ring (250 gp)", 
                 "Prisoner's Dungeon Ring (250 gp) (design provides clue to function)", "Prisoner's Dungeon Ring (250 gp) (inscription provides clue to function)", "Superior Ring of Revelation (24000 gp)", 
                 "Superior Ring of Revelation (24000 gp) (design provides clue to function)", "Superior Ring of Revelation (24000 gp) (inscription provides clue to function)"]
-    possibility = ring * random.randrange(1, 101, 1)
+    possibility = ring + random.randrange(1, 101, 1)
     ringContain = []
-    if possibility > 34 :
+    if possibility > 75 :
         counter = 0
         if cr < 4 :
             counter = int(cr*0)
@@ -912,9 +912,9 @@ def Wonderous(cr, wonderous) :
                         "Stone of Alarm (2700 gp) (inscription provides clue to function)", "Summon-slave Crystal (10000 gp)", "Treasurer's Seal (10000 gp)", "Vambraces of the Genie (djinni) (18900 gp)", 
                         "Vambraces of the Genie (marid) (18900 gp) (inscription provides clue to function)", "Vampiric Gloves (18000 gp)", "Vest of Stable Mutation (20000 gp)", "Vest of Surgery (3000 gp)", 
                         "Vest of Surgery (3000 gp) (inscription provides clue to function)", "Volatile Vaporizer (2nd) (3000 gp) (design provides clue to function)", "Word Bottle (1500 gp)"]
-    possibility = wonderous * random.randrange(1, 101, 1)
+    possibility = wonderous + random.randrange(1, 101, 1)
     wonderousContain = []
-    if possibility > 34 :
+    if possibility > 80 :
         counter = 0
         if cr < 4 :
             counter = int(cr*.222)
@@ -986,8 +986,8 @@ def Artifact(cr, artifact) :
                     "Sword of Lust (Major Artifact)", "Sword of Pride (Major Artifact)", "Sword of Sloth (Major Artifact)", "Sword of Valor (Major Artifact)", "Sword of Wrath (Major Artifact)", 
                     "Synchrony Device (Major Artifact)", "Tarnhelm (Major Artifact)", "Tathlum (Major Artifact)", "The Briar Blade", "The Gasping Pearl (Major Artifact)", "The Jewel of Everlasting Gold", 
                     "Thorncrown of Blasting", "Throne of Command (Major Artifact)", "Trueforge (Major Artifact)", "Was Scepter (Major Artifact)", "Winter Collector (Major Artifact)"]
-    possibility = artifact * random.randrange(1, 101, 1)
-    if possibility > 95 and possibility < 99 :
+    possibility = artifact + random.randrange(1, 101, 1)
+    if possibility > 115 :
         details = "%s%s" % (details, lesserList[random.randrange(0, lesserList.__len__(), 1)])
     if possibility > 98 :
         details = "%s%s" % (details, majorList[random.randrange(0, majorList.__len__(), 1)])
@@ -1000,8 +1000,8 @@ def Cursed(cr, cursed) :
                     "Medallion of thought projection", "Flask of curses", "Dust of sneezing and choking", "Helm of opposite alignment", "Potion of poison", "Broom of animated attack", "Robe of powerlessness", 
                     "Vacuous grimoire", "Spear, cursed backbiter", "Armor of arrow attraction", "Net of snaring", "Bag of devouring", "Mace of blood", "Robe of vermin", "Periapt of foul rotting", 
                     "Sword, berserking", "Boots of dancing", "Crystal hypnosis ball", "Necklace of strangulation", "Poisonous cloak", "Scarab of death"]
-    possibility = cursed * random.randrange(1, 101, 1)
-    if possibility > 89 :
+    possibility = random.randrange(1, 101, 1) - (cursed/2)
+    if possibility < -5 :
         details = "%s%s" % (details, cursedList[random.randrange(0, cursedList.__len__(), 1)])
     details = "%s%s" % (details, "\n-Intelligent--------------------------------\n")
     return details    
@@ -1198,8 +1198,8 @@ def Intelligent(cr, intelligent) :
                             "Warhammer (+1 weapon) (sheds light) (2312 gp)", "Warhammer (+1 weapon, Frost) (sheds light) (8312 gp)", "Warhammer (+2 weapon) (8312 gp)", "Warhammer (+2 weapon) (sheds light) (8312 gp)", 
                             "Whip (+1 weapon) (2301 gp)", "Whip (+1 weapon) (inscription provides clue to function) (2301 gp)", "Whip (+1 weapon) (sheds light) (2301 gp)", "Whip (+2 weapon) (sheds light) (8301 gp)", 
                             "Winged Shield (17257 gp)", "Zombie Skin Shield (2159 gp)"]
-    possibility = intelligent * random.randrange(1, 101, 1)
-    if possibility > 96 :
+    possibility = intelligent + random.randrange(1, 101, 1)
+    if possibility > 105 :
         details = "%s%s%s%s%s%s%s%s%s%s%s%s" % (details, intemIntellList[random.randrange(0, intemIntellList.__len__(), 1)], alignmentList[random.randrange(0, alignmentList.__len__(), 1)], "\n", 
                                                 sensesList[random.randrange(0, sensesList.__len__(), 1)], powersList[random.randrange(0, powersList.__len__(), 1)], "\n", purposeList[random.randrange(0, purposeList.__len__(), 1)], 
                                                 dedPowersList[random.randrange(0, dedPowersList.__len__(), 1)], "\n", baseEgoModList[random.randrange(0, baseEgoModList.__len__(), 1)], 
